@@ -10,9 +10,7 @@ package view;
  */
 public class Cadastro extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Cadastro
-     */
+    
     public Cadastro() {
         initComponents();
     }
@@ -24,52 +22,203 @@ public class Cadastro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        FundoBranco = new javax.swing.JPanel();
+        FundoVerde = new javax.swing.JPanel();
+        txtInscrever = new javax.swing.JLabel();
+        txtNome = new javax.swing.JLabel();
+        fNome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JLabel();
+        fEmail = new javax.swing.JTextField();
+        txtNomeUsuario = new javax.swing.JLabel();
+        fNomeUsuario = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JLabel();
+        txtRepetirSenha = new javax.swing.JLabel();
+        ContinuarBtn = new javax.swing.JButton();
+        txtEntrar = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
-        jPanel2.setBackground(new java.awt.Color(111, 143, 114));
+        FundoBranco.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FundoVerde.setBackground(new java.awt.Color(111, 143, 114));
+
+        javax.swing.GroupLayout FundoVerdeLayout = new javax.swing.GroupLayout(FundoVerde);
+        FundoVerde.setLayout(FundoVerdeLayout);
+        FundoVerdeLayout.setHorizontalGroup(
+            FundoVerdeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FundoVerdeLayout.setVerticalGroup(
+            FundoVerdeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 300, Short.MAX_VALUE))
+        txtInscrever.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        txtInscrever.setForeground(new java.awt.Color(51, 51, 51));
+        txtInscrever.setText("Inscrever-se");
+        txtInscrever.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtNome.setText("Nome completo");
+        txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        fNome.setBackground(new java.awt.Color(255, 255, 255));
+        fNome.setColumns(1);
+        fNome.setText("Nome...");
+        fNome.setSelectionColor(new java.awt.Color(111, 143, 114));
+        fNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fNomeFocusLost(evt);
+            }
+        });
+
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtEmail.setText("Email");
+        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        fEmail.setBackground(new java.awt.Color(255, 255, 255));
+        fEmail.setText("Email...");
+        fEmail.setSelectionColor(new java.awt.Color(111, 143, 114));
+
+        txtNomeUsuario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtNomeUsuario.setText("Nome de usuário");
+        txtNomeUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        fNomeUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        fNomeUsuario.setText("Usuário...");
+        fNomeUsuario.setSelectionColor(new java.awt.Color(111, 143, 114));
+
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtSenha.setText("Senha");
+        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        txtRepetirSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtRepetirSenha.setText("Repita a Senha");
+        txtRepetirSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        ContinuarBtn.setBackground(new java.awt.Color(111, 143, 114));
+        ContinuarBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ContinuarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        ContinuarBtn.setText("Continuar");
+        ContinuarBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ContinuarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        txtEntrar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtEntrar.setForeground(new java.awt.Color(102, 102, 102));
+        txtEntrar.setText("Entrar");
+        txtEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setText("senhasenha");
+
+        jPasswordField2.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField2.setText("senhasenha");
+
+        javax.swing.GroupLayout FundoBrancoLayout = new javax.swing.GroupLayout(FundoBranco);
+        FundoBranco.setLayout(FundoBrancoLayout);
+        FundoBrancoLayout.setHorizontalGroup(
+            FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FundoBrancoLayout.createSequentialGroup()
+                .addComponent(FundoVerde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtInscrever)
+                    .addComponent(txtNome)
+                    .addComponent(fNome, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail)
+                    .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeUsuario)
+                    .addComponent(fNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRepetirSenha)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FundoBrancoLayout.createSequentialGroup()
+                        .addComponent(ContinuarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(txtEntrar))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        FundoBrancoLayout.setVerticalGroup(
+            FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FundoVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(FundoBrancoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtInscrever)
+                .addGap(18, 18, 18)
+                .addComponent(txtNome)
+                .addGap(6, 6, 6)
+                .addComponent(fNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtEmail)
+                .addGap(6, 6, 6)
+                .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNomeUsuario)
+                .addGap(6, 6, 6)
+                .addComponent(fNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSenha)
+                .addGap(6, 6, 6)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtRepetirSenha)
+                .addGap(6, 6, 6)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ContinuarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FundoBrancoLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(txtEntrar))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FundoBranco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FundoBranco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNomeFocusGained
+        if(fNome.getText().equalsIgnoreCase("Nome...")){
+            fNome.setText("");
+            fNome.setForeground(new java.awt.Color(200, 200, 200));
+        }
+    }//GEN-LAST:event_fNomeFocusGained
+
+    private void fNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNomeFocusLost
+        if(fNome.getText().equalsIgnoreCase("")){
+            fNome.setText("Nome...");
+            fNome.setForeground(new java.awt.Color(187,187,187));
+        }
+    }//GEN-LAST:event_fNomeFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ContinuarBtn;
+    private javax.swing.JPanel FundoBranco;
+    private javax.swing.JPanel FundoVerde;
+    private javax.swing.JTextField fEmail;
+    private javax.swing.JTextField fNome;
+    private javax.swing.JTextField fNomeUsuario;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JLabel txtEmail;
+    private javax.swing.JLabel txtEntrar;
+    private javax.swing.JLabel txtInscrever;
+    private javax.swing.JLabel txtNome;
+    private javax.swing.JLabel txtNomeUsuario;
+    private javax.swing.JLabel txtRepetirSenha;
+    private javax.swing.JLabel txtSenha;
     // End of variables declaration//GEN-END:variables
 }
