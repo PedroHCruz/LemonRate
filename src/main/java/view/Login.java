@@ -10,9 +10,7 @@ package view;
  */
 public class Login extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Cadastro
-     */
+    
     public Login() {
         initComponents();
     }
@@ -24,52 +22,149 @@ public class Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        FundoBranco = new javax.swing.JPanel();
+        FundoVerde = new javax.swing.JPanel();
+        txtEntrar = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JLabel();
+        fEmail = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JLabel();
+        ContinuarBtn = new javax.swing.JButton();
+        txtInscreverse = new javax.swing.JLabel();
+        fSenha = new javax.swing.JPasswordField();
+        UserIcon = new javax.swing.JLabel();
+        txtEsqueciSenha = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
-        jPanel2.setBackground(new java.awt.Color(111, 143, 114));
+        FundoBranco.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FundoVerde.setBackground(new java.awt.Color(111, 143, 114));
+
+        javax.swing.GroupLayout FundoVerdeLayout = new javax.swing.GroupLayout(FundoVerde);
+        FundoVerde.setLayout(FundoVerdeLayout);
+        FundoVerdeLayout.setHorizontalGroup(
+            FundoVerdeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FundoVerdeLayout.setVerticalGroup(
+            FundoVerdeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 300, Short.MAX_VALUE))
+        txtEntrar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        txtEntrar.setForeground(new java.awt.Color(51, 51, 51));
+        txtEntrar.setText("Entrar");
+        txtEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtEmail.setText("Email");
+        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        fEmail.setBackground(new java.awt.Color(255, 255, 255));
+        fEmail.setText("Email...");
+        fEmail.setSelectionColor(new java.awt.Color(111, 143, 114));
+
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtSenha.setText("Senha");
+        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        ContinuarBtn.setBackground(new java.awt.Color(111, 143, 114));
+        ContinuarBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ContinuarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        ContinuarBtn.setText("Continuar");
+        ContinuarBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ContinuarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        txtInscreverse.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtInscreverse.setForeground(new java.awt.Color(102, 102, 102));
+        txtInscreverse.setText("Inscrever-se");
+        txtInscreverse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        fSenha.setBackground(new java.awt.Color(255, 255, 255));
+        fSenha.setText("senhasenha");
+
+        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons/UserIcon.png"))); // NOI18N
+
+        txtEsqueciSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        txtEsqueciSenha.setText("Esqueci minha senha");
+        txtEsqueciSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout FundoBrancoLayout = new javax.swing.GroupLayout(FundoBranco);
+        FundoBranco.setLayout(FundoBrancoLayout);
+        FundoBrancoLayout.setHorizontalGroup(
+            FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FundoBrancoLayout.createSequentialGroup()
+                .addComponent(FundoVerde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FundoBrancoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEntrar)
+                            .addComponent(txtEmail)
+                            .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha)
+                            .addComponent(fSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(ContinuarBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FundoBrancoLayout.createSequentialGroup()
+                                    .addGap(164, 164, 164)
+                                    .addComponent(txtEsqueciSenha)))))
+                    .addGroup(FundoBrancoLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(txtInscreverse))
+                    .addGroup(FundoBrancoLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(UserIcon))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        FundoBrancoLayout.setVerticalGroup(
+            FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FundoVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(FundoBrancoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtEntrar)
+                .addGap(36, 36, 36)
+                .addComponent(UserIcon)
+                .addGap(20, 20, 20)
+                .addComponent(txtEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(txtSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEsqueciSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ContinuarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtInscreverse)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FundoBranco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FundoBranco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ContinuarBtn;
+    private javax.swing.JPanel FundoBranco;
+    private javax.swing.JPanel FundoVerde;
+    private javax.swing.JLabel UserIcon;
+    private javax.swing.JTextField fEmail;
+    private javax.swing.JPasswordField fSenha;
+    private javax.swing.JLabel txtEmail;
+    private javax.swing.JLabel txtEntrar;
+    private javax.swing.JLabel txtEsqueciSenha;
+    private javax.swing.JLabel txtInscreverse;
+    private javax.swing.JLabel txtSenha;
     // End of variables declaration//GEN-END:variables
 }

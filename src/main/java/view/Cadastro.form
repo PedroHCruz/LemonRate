@@ -53,9 +53,9 @@
                       <Component id="txtNomeUsuario" min="-2" max="-2" attributes="0"/>
                       <Component id="fNomeUsuario" min="-2" pref="260" max="-2" attributes="0"/>
                       <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField1" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Component id="fSenha" min="-2" pref="260" max="-2" attributes="0"/>
                       <Component id="txtRepetirSenha" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField2" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Component id="fRepetirSenha" min="-2" pref="260" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="ContinuarBtn" min="-2" pref="133" max="-2" attributes="0"/>
                           <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
@@ -86,11 +86,11 @@
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="fSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Component id="txtRepetirSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="jPasswordField2" min="-2" max="-2" attributes="0"/>
+                  <Component id="fRepetirSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ContinuarBtn" min="-2" pref="34" max="-2" attributes="0"/>
@@ -267,7 +267,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="fSenha">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -275,7 +275,7 @@
             <Property name="text" type="java.lang.String" value="senhasenha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+        <Component class="javax.swing.JPasswordField" name="fRepetirSenha">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

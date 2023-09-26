@@ -35,8 +35,8 @@ public class Cadastro extends javax.swing.JPanel {
         txtRepetirSenha = new javax.swing.JLabel();
         ContinuarBtn = new javax.swing.JButton();
         txtEntrar = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        fSenha = new javax.swing.JPasswordField();
+        fRepetirSenha = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(800, 500));
 
@@ -113,11 +113,11 @@ public class Cadastro extends javax.swing.JPanel {
         txtEntrar.setText("Entrar");
         txtEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("senhasenha");
+        fSenha.setBackground(new java.awt.Color(255, 255, 255));
+        fSenha.setText("senhasenha");
 
-        jPasswordField2.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField2.setText("senhasenha");
+        fRepetirSenha.setBackground(new java.awt.Color(255, 255, 255));
+        fRepetirSenha.setText("senhasenha");
 
         javax.swing.GroupLayout FundoBrancoLayout = new javax.swing.GroupLayout(FundoBranco);
         FundoBranco.setLayout(FundoBrancoLayout);
@@ -135,9 +135,9 @@ public class Cadastro extends javax.swing.JPanel {
                     .addComponent(txtNomeUsuario)
                     .addComponent(fNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSenha)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRepetirSenha)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FundoBrancoLayout.createSequentialGroup()
                         .addComponent(ContinuarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
@@ -164,11 +164,11 @@ public class Cadastro extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(txtSenha)
                 .addGap(6, 6, 6)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtRepetirSenha)
                 .addGap(6, 6, 6)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ContinuarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,8 +211,8 @@ public class Cadastro extends javax.swing.JPanel {
     private javax.swing.JTextField fEmail;
     private javax.swing.JTextField fNome;
     private javax.swing.JTextField fNomeUsuario;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField fRepetirSenha;
+    private javax.swing.JPasswordField fSenha;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtEntrar;
     private javax.swing.JLabel txtInscrever;
