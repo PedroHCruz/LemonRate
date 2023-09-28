@@ -31,12 +31,12 @@ public class Login extends javax.swing.JPanel {
         ContinuarBtn = new javax.swing.JButton();
         txtInscreverse = new javax.swing.JLabel();
         fSenha = new javax.swing.JPasswordField();
-        UserIcon = new javax.swing.JLabel();
         txtEsqueciSenha = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 500));
 
         FundoBranco.setBackground(new java.awt.Color(255, 255, 255));
+        FundoBranco.setPreferredSize(new java.awt.Dimension(795, 500));
 
         FundoVerde.setBackground(new java.awt.Color(111, 143, 114));
 
@@ -79,11 +79,14 @@ public class Login extends javax.swing.JPanel {
         txtInscreverse.setForeground(new java.awt.Color(102, 102, 102));
         txtInscreverse.setText("Inscrever-se");
         txtInscreverse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtInscreverse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtInscreverseMouseClicked(evt);
+            }
+        });
 
         fSenha.setBackground(new java.awt.Color(255, 255, 255));
         fSenha.setText("senhasenha");
-
-        UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons/UserIcon.png"))); // NOI18N
 
         txtEsqueciSenha.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         txtEsqueciSenha.setText("Esqueci minha senha");
@@ -111,10 +114,7 @@ public class Login extends javax.swing.JPanel {
                                     .addComponent(txtEsqueciSenha)))))
                     .addGroup(FundoBrancoLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(txtInscreverse))
-                    .addGroup(FundoBrancoLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(UserIcon))))
+                        .addComponent(txtInscreverse))))
         );
         FundoBrancoLayout.setVerticalGroup(
             FundoBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +122,7 @@ public class Login extends javax.swing.JPanel {
             .addGroup(FundoBrancoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(txtEntrar)
-                .addGap(36, 36, 36)
-                .addComponent(UserIcon)
-                .addGap(20, 20, 20)
+                .addGap(120, 120, 120)
                 .addComponent(txtEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,7 +143,7 @@ public class Login extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FundoBranco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(FundoBranco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +151,15 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtInscreverseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtInscreverseMouseClicked
+        FrameApp.trocaPainel("Cadastro", new Cadastro());
+    }//GEN-LAST:event_txtInscreverseMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ContinuarBtn;
     private javax.swing.JPanel FundoBranco;
     private javax.swing.JPanel FundoVerde;
-    private javax.swing.JLabel UserIcon;
     private javax.swing.JTextField fEmail;
     private javax.swing.JPasswordField fSenha;
     private javax.swing.JLabel txtEmail;

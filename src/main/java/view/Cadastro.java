@@ -66,6 +66,7 @@ public class Cadastro extends javax.swing.JPanel {
 
         fNome.setBackground(new java.awt.Color(255, 255, 255));
         fNome.setColumns(1);
+        fNome.setForeground(new java.awt.Color(204, 204, 204));
         fNome.setText("Nome...");
         fNome.setSelectionColor(new java.awt.Color(111, 143, 114));
         fNome.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -112,6 +113,11 @@ public class Cadastro extends javax.swing.JPanel {
         txtEntrar.setForeground(new java.awt.Color(102, 102, 102));
         txtEntrar.setText("Entrar");
         txtEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEntrarMouseClicked(evt);
+            }
+        });
 
         fSenha.setBackground(new java.awt.Color(255, 255, 255));
         fSenha.setText("senhasenha");
@@ -202,6 +208,10 @@ public class Cadastro extends javax.swing.JPanel {
             fNome.setForeground(new java.awt.Color(187,187,187));
         }
     }//GEN-LAST:event_fNomeFocusLost
+
+    private void txtEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEntrarMouseClicked
+        FrameApp.trocaPainel("Login", new Login());
+    }//GEN-LAST:event_txtEntrarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
