@@ -35,13 +35,15 @@ public class Login extends javax.swing.JPanel {
         senhaF = new javax.swing.JPasswordField();
         membroTxt = new javax.swing.JLabel();
         cadastroTxt = new javax.swing.JLabel();
+        emailTxt = new javax.swing.JLabel();
+        senhaTxt = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(398, 598));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         bemvindoTxt.setBackground(new java.awt.Color(102, 102, 102));
-        bemvindoTxt.setFont(new java.awt.Font("Rubik", 0, 24)); // NOI18N
+        bemvindoTxt.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         bemvindoTxt.setForeground(new java.awt.Color(102, 102, 102));
         bemvindoTxt.setText("Bem vindo");
 
@@ -101,6 +103,16 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
+        emailTxt.setBackground(new java.awt.Color(153, 153, 153));
+        emailTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        emailTxt.setForeground(new java.awt.Color(153, 153, 153));
+        emailTxt.setText("Email");
+
+        senhaTxt.setBackground(new java.awt.Color(153, 153, 153));
+        senhaTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        senhaTxt.setForeground(new java.awt.Color(153, 153, 153));
+        senhaTxt.setText("Senha");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -108,6 +120,8 @@ public class Login extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(senhaTxt)
+                    .addComponent(emailTxt)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(membroTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -122,19 +136,23 @@ public class Login extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(40, 40, 40)
                 .addComponent(bemvindoTxt)
-                .addGap(111, 111, 111)
+                .addGap(89, 89, 89)
+                .addComponent(emailTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
+                .addGap(60, 60, 60)
+                .addComponent(senhaTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(58, 58, 58)
                 .addComponent(entrarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cadastroTxt)
                     .addComponent(membroTxt))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         bemvindoTxt.grabFocus();
@@ -161,34 +179,36 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_cadastroTxtMouseClicked
 
     private void emailFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFFocusGained
-        if(emailF.getText().equals("seuemail@gmail.com")){
-            emailF.setText("");
-            emailF.setForeground(new Color(51,51,51));
+        if(this.emailF.getText().equals("seuemail@gmail.com")){
+            this.emailF.setText("");
+            this.emailF.setForeground(new Color(51,51,51));
         } 
     }//GEN-LAST:event_emailFFocusGained
 
     private void emailFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFFocusLost
-        if(emailF.getText().equals("")){
-            emailF.setText("seuemail@gmail.com");
-            emailF.setForeground(new Color(153,153,153));
+        if(this.emailF.getText().equals("")){
+            this.emailF.setText("seuemail@gmail.com");
+            this.emailF.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_emailFFocusLost
 
     private void senhaFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaFFocusGained
-        senhaF.setEchoChar('*');
+        this.senhaF.setEchoChar('*');
         String password = String.valueOf(senhaF.getPassword());
         if(password.toLowerCase().equals("suasenha")){
-            senhaF.setText("");
-            senhaF.setForeground(new Color(51,51,51));
+            this.senhaF.setText("");
+            this.senhaF.setForeground(new Color(51,51,51));
         }
     }//GEN-LAST:event_senhaFFocusGained
 
     private void senhaFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaFFocusLost
-        senhaF.setEchoChar((char)0);
         String password = String.valueOf(senhaF.getPassword());
+        if(password.equalsIgnoreCase("")){
+        this.senhaF.setEchoChar((char)0);   
         if(password.toLowerCase().equals("")){
-            senhaF.setText("suasenha");
-            senhaF.setForeground(new Color(153,153,153));
+            this.senhaF.setText("suasenha");
+            this.senhaF.setForeground(new Color(153,153,153));
+        }
         }
     }//GEN-LAST:event_senhaFFocusLost
 
@@ -197,9 +217,11 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JLabel bemvindoTxt;
     private javax.swing.JLabel cadastroTxt;
     private javax.swing.JTextField emailF;
+    private javax.swing.JLabel emailTxt;
     private javax.swing.JButton entrarBTN;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel membroTxt;
     private javax.swing.JPasswordField senhaF;
+    private javax.swing.JLabel senhaTxt;
     // End of variables declaration//GEN-END:variables
 }

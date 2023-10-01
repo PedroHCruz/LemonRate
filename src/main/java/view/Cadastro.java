@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author 0068961
@@ -35,21 +37,34 @@ public class Cadastro extends javax.swing.JPanel {
         nomeF = new javax.swing.JTextField();
         membroTxt = new javax.swing.JLabel();
         acessarcontaTxt = new javax.swing.JLabel();
+        nomeTxt = new javax.swing.JLabel();
+        emailTxt = new javax.swing.JLabel();
+        senhaTxt = new javax.swing.JLabel();
+        senha1Txt = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(398, 598));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         bemvindoTxt.setBackground(new java.awt.Color(102, 102, 102));
-        bemvindoTxt.setFont(new java.awt.Font("Rubik", 0, 24)); // NOI18N
+        bemvindoTxt.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         bemvindoTxt.setForeground(new java.awt.Color(102, 102, 102));
         bemvindoTxt.setText("Criar Conta");
 
         emailF.setBackground(new java.awt.Color(230, 230, 230));
-        emailF.setForeground(new java.awt.Color(51, 51, 51));
+        emailF.setForeground(new java.awt.Color(153, 153, 153));
         emailF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        emailF.setText("seuemail@gmail.com");
         emailF.setBorder(null);
         emailF.setPreferredSize(new java.awt.Dimension(80, 80));
+        emailF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailFFocusLost(evt);
+            }
+        });
 
         cadastrarBTN.setBackground(new java.awt.Color(230, 230, 230));
         cadastrarBTN.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -59,9 +74,18 @@ public class Cadastro extends javax.swing.JPanel {
         cadastrarBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         senhaF.setBackground(new java.awt.Color(230, 230, 230));
-        senhaF.setForeground(new java.awt.Color(51, 51, 51));
+        senhaF.setForeground(new java.awt.Color(153, 153, 153));
         senhaF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        senhaF.setText("suasenha");
         senhaF.setBorder(null);
+        senhaF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                senhaFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                senhaFFocusLost(evt);
+            }
+        });
         senhaF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaFActionPerformed(evt);
@@ -69,9 +93,18 @@ public class Cadastro extends javax.swing.JPanel {
         });
 
         senhaF1.setBackground(new java.awt.Color(230, 230, 230));
-        senhaF1.setForeground(new java.awt.Color(51, 51, 51));
+        senhaF1.setForeground(new java.awt.Color(153, 153, 153));
         senhaF1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        senhaF1.setText("suasenha");
         senhaF1.setBorder(null);
+        senhaF1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                senhaF1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                senhaF1FocusLost(evt);
+            }
+        });
         senhaF1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaF1ActionPerformed(evt);
@@ -79,10 +112,19 @@ public class Cadastro extends javax.swing.JPanel {
         });
 
         nomeF.setBackground(new java.awt.Color(230, 230, 230));
-        nomeF.setForeground(new java.awt.Color(51, 51, 51));
+        nomeF.setForeground(new java.awt.Color(153, 153, 153));
         nomeF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nomeF.setText("seunome");
         nomeF.setBorder(null);
         nomeF.setPreferredSize(new java.awt.Dimension(80, 80));
+        nomeF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomeFFocusLost(evt);
+            }
+        });
 
         membroTxt.setBackground(new java.awt.Color(153, 153, 153));
         membroTxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -99,6 +141,26 @@ public class Cadastro extends javax.swing.JPanel {
             }
         });
 
+        nomeTxt.setBackground(new java.awt.Color(153, 153, 153));
+        nomeTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        nomeTxt.setForeground(new java.awt.Color(153, 153, 153));
+        nomeTxt.setText("Nome");
+
+        emailTxt.setBackground(new java.awt.Color(153, 153, 153));
+        emailTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        emailTxt.setForeground(new java.awt.Color(153, 153, 153));
+        emailTxt.setText("Email");
+
+        senhaTxt.setBackground(new java.awt.Color(153, 153, 153));
+        senhaTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        senhaTxt.setForeground(new java.awt.Color(153, 153, 153));
+        senhaTxt.setText("Senha");
+
+        senha1Txt.setBackground(new java.awt.Color(153, 153, 153));
+        senha1Txt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        senha1Txt.setForeground(new java.awt.Color(153, 153, 153));
+        senha1Txt.setText("Repita sua senha");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -106,6 +168,10 @@ public class Cadastro extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(senha1Txt)
+                    .addComponent(senhaTxt)
+                    .addComponent(emailTxt)
+                    .addComponent(nomeTxt)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(membroTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,15 +189,23 @@ public class Cadastro extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(30, 30, 30)
                 .addComponent(bemvindoTxt)
-                .addGap(48, 48, 48)
+                .addGap(26, 26, 26)
+                .addComponent(nomeTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(19, 19, 19)
+                .addComponent(emailTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
+                .addComponent(senhaTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(22, 22, 22)
+                .addComponent(senha1Txt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaF1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(cadastrarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,8 +213,11 @@ public class Cadastro extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(membroTxt)
                     .addComponent(acessarcontaTxt))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
+
+        senhaF.setEchoChar((char)0);
+        senhaF1.setEchoChar((char)0);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -166,16 +243,87 @@ public class Cadastro extends javax.swing.JPanel {
         FrameApp.trocaPainel("Login", new Login());
     }//GEN-LAST:event_acessarcontaTxtMouseClicked
 
+    private void nomeFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFFocusGained
+        if(this.nomeF.getText().equals("seunome")){
+            this.nomeF.setText("");
+            this.nomeF.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_nomeFFocusGained
+
+    private void nomeFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFFocusLost
+        if(this.nomeF.getText().equals("")){
+            this.nomeF.setText("seunome");
+            this.nomeF.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_nomeFFocusLost
+
+    private void emailFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFFocusGained
+        if(this.emailF.getText().equals("seuemail@gmail.com")){
+            this.emailF.setText("");
+            this.emailF.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_emailFFocusGained
+
+    private void emailFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFFocusLost
+        if(this.emailF.getText().equals("")){
+            this.emailF.setText("seuemail@gmail.com");
+            this.emailF.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_emailFFocusLost
+
+    private void senhaFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaFFocusGained
+        this.senhaF.setEchoChar('*');
+        String password = String.valueOf(senhaF.getPassword());
+        if(password.toLowerCase().equals("suasenha")){
+            this.senhaF.setText("");
+            this.senhaF.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_senhaFFocusGained
+
+    private void senhaFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaFFocusLost
+        String password = String.valueOf(senhaF.getPassword());
+        if(password.equalsIgnoreCase("")){
+        if(password.toLowerCase().equals("")){
+            this.senhaF.setText("suasenha");
+            this.senhaF.setForeground(new Color(153,153,153));
+        }
+        }
+    }//GEN-LAST:event_senhaFFocusLost
+
+    private void senhaF1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaF1FocusGained
+        this.senhaF1.setEchoChar('*');
+        String password = String.valueOf(senhaF1.getPassword());
+        if(password.toLowerCase().equals("suasenha")){
+            this.senhaF1.setText("");
+            this.senhaF1.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_senhaF1FocusGained
+
+    private void senhaF1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaF1FocusLost
+        String password = String.valueOf(senhaF1.getPassword());
+        if(password.equalsIgnoreCase("")){
+        this.senhaF1.setEchoChar((char)0);        
+        if(password.toLowerCase().equals("")){
+            this.senhaF1.setText("suasenha");
+            this.senhaF1.setForeground(new Color(153,153,153));
+        }
+        }
+    }//GEN-LAST:event_senhaF1FocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acessarcontaTxt;
     private javax.swing.JLabel bemvindoTxt;
     private javax.swing.JButton cadastrarBTN;
     private javax.swing.JTextField emailF;
+    private javax.swing.JLabel emailTxt;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel membroTxt;
     private javax.swing.JTextField nomeF;
+    private javax.swing.JLabel nomeTxt;
+    private javax.swing.JLabel senha1Txt;
     private javax.swing.JPasswordField senhaF;
     private javax.swing.JPasswordField senhaF1;
+    private javax.swing.JLabel senhaTxt;
     // End of variables declaration//GEN-END:variables
 }
