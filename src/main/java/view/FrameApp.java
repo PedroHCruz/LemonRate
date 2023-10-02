@@ -4,6 +4,7 @@
  */
 package view;
 
+import control.UsuarioControl;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.util.Hashtable;
@@ -26,7 +27,6 @@ public class FrameApp extends javax.swing.JFrame {
     public FrameApp() {
         initComponents();
         ConfigPanels();
-        
         trocaPainel("Login", new Login());
         
     }

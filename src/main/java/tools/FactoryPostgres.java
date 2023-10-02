@@ -15,16 +15,18 @@ import java.sql.SQLException;
 public class FactoryPostgres {
 
     private static Connection conexaoBD;
-    private static String URL = "";
-    private static String USER = "";
-    private static String PASS = "";
+    private static String URL = "jdbc:postgresql://10.90.24.56:5432/aula";
+    private static String USER = "aula";
+    private static String PASS = "aula";
 
     public static Connection getConexaoPostgres() {
         if (conexaoBD == null) {
             try {
                 conexaoBD = DriverManager.getConnection(URL, USER, PASS);
+                System.out.println("conectou");
             } catch (SQLException ex) {
                 System.err.println("Erro na conexao com o banco");
+                ex.printStackTrace();
                 return null;
             }
         }
