@@ -247,7 +247,7 @@ public class Cadastro extends javax.swing.JPanel {
     }//GEN-LAST:event_senhaF1ActionPerformed
 
     private void acessarcontaTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acessarcontaTxtMouseClicked
-        FrameApp.trocaPainel("Login", new Login());
+        FrameApp_Login.trocaPainel("Login", new Login());
     }//GEN-LAST:event_acessarcontaTxtMouseClicked
 
     private void nomeFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFFocusGained

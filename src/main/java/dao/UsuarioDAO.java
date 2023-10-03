@@ -16,42 +16,44 @@ import tools.FactoryPostgres;
  * @author 0068961
  */
 public class UsuarioDAO {
+
     private Connection conexaoBanco;
 
     public UsuarioDAO() {
         this.conexaoBanco = FactoryPostgres.getConexaoPostgres();
     }
-    
-    public boolean cadastraUsuario(Usuario novoUsuario){
+
+    public boolean cadastraUsuario(Usuario novoUsuario) {
         String sql = "INSERT INTO usuario(nome, email, senha) VALUES(?,?,?);";
-        
-        try(PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)){
+
+        try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, novoUsuario.getNome());
             trans.setString(2, novoUsuario.getEmail());
             trans.setString(3, novoUsuario.getSenha());
             trans.executeUpdate();
             return true;
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.err.println("Erro ao cadastrar!");
             return false;
         }
     }
-    public boolean logaUsuario(String email, String senha){
-        String sql = "SELECT email,senha FROM usuario WHERE email = '"+email+"' AND senha = '"+senha+"';";
-        try(PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)){
+
+    public boolean logaUsuario(String email, String senha) {
+        String sql = "SELECT email,senha FROM usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
+        try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             ResultSet resultadoBD = trans.executeQuery();
-            
-            if(resultadoBD.next()){
-                System.out.println("Possui");
+
+            if (resultadoBD.next()) {
+
                 return true;
             } else {
-                System.out.println("Nao possui");
+
                 return false;
             }
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.err.println("Erro ao logar");
             return false;
         }
-        
+
     }
 }

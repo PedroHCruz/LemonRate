@@ -187,7 +187,7 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_senhaFActionPerformed
 
     private void cadastroTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastroTxtMouseClicked
-        FrameApp.trocaPainel("Cadastro", new Cadastro());
+        FrameApp_Login.trocaPainel("Cadastro", new Cadastro());
     }//GEN-LAST:event_cadastroTxtMouseClicked
 
     private void emailFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFFocusGained
@@ -234,6 +234,13 @@ public class Login extends javax.swing.JPanel {
         
         boolean ok = this.usuarioControl.logaUsuario(email, senha);
         
+        if(ok == true){
+            FrameApp_menu janela = new FrameApp_menu();
+            janela.setVisible(true);
+            
+        } else {
+            
+        }
     }//GEN-LAST:event_entrarBTNActionPerformed
 
 

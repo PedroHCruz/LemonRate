@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
  *
  * @author 0068961
  */
-public class FrameApp extends javax.swing.JFrame {
+public class FrameApp_Login extends javax.swing.JFrame {
 
     
     private static JScrollPane painelRolagem;
@@ -24,12 +24,14 @@ public class FrameApp extends javax.swing.JFrame {
     private static Hashtable<String,JPanel> historicoPaineis;
     
     
-    public FrameApp() {
+    public FrameApp_Login() {
         initComponents();
         ConfigPanels();
         trocaPainel("Login", new Login());
         
+        
     }
+    
 
     private void ConfigPanels(){
         this.setLayout(new BorderLayout());
@@ -69,7 +71,6 @@ public class FrameApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 600));
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,20 +105,21 @@ public class FrameApp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameApp().setVisible(true);
+                new FrameApp_Login().setVisible(true);
             }
         });
     }
