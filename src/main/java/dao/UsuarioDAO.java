@@ -6,6 +6,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Usuario;
 import tools.FactoryPostgres;
@@ -34,5 +35,23 @@ public class UsuarioDAO {
             System.err.println("Erro ao cadastrar!");
             return false;
         }
+    }
+    public boolean logaUsuario(String email, String senha){
+        String sql = "SELECT email,senha FROM usuario WHERE email = '"+email+"' AND senha = '"+senha+"';";
+        try(PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)){
+            ResultSet resultadoBD = trans.executeQuery();
+            
+            if(resultadoBD.next()){
+                System.out.println("Possui");
+                return true;
+            } else {
+                System.out.println("Nao possui");
+                return false;
+            }
+        } catch (SQLException ex){
+            System.err.println("Erro ao logar");
+            return false;
+        }
+        
     }
 }

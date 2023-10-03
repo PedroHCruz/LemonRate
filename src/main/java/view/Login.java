@@ -4,7 +4,9 @@
  */
 package view;
 
+import control.UsuarioControl;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +14,11 @@ import java.awt.Color;
  */
 public class Login extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Login
-     */
+    private static UsuarioControl usuarioControl;
+    
     public Login() {
         initComponents();
+        this.usuarioControl = new UsuarioControl();
     }
 
     /**
@@ -68,6 +70,16 @@ public class Login extends javax.swing.JPanel {
         entrarBTN.setText("Entrar");
         entrarBTN.setBorder(null);
         entrarBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrarBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                entrarBTNMouseClicked(evt);
+            }
+        });
+        entrarBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarBTNActionPerformed(evt);
+            }
+        });
 
         senhaF.setBackground(new java.awt.Color(230, 230, 230));
         senhaF.setForeground(new java.awt.Color(153, 153, 153));
@@ -211,6 +223,18 @@ public class Login extends javax.swing.JPanel {
         }
         }
     }//GEN-LAST:event_senhaFFocusLost
+
+    private void entrarBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBTNMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entrarBTNMouseClicked
+
+    private void entrarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarBTNActionPerformed
+        String email = emailF.getText();
+        String senha = String.valueOf(senhaF.getPassword());
+        
+        boolean ok = this.usuarioControl.logaUsuario(email, senha);
+        
+    }//GEN-LAST:event_entrarBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,5 +37,21 @@ public class UsuarioControl {
         Usuario novoUsuario = new Usuario(nome, email, senha);
         return this.dao.cadastraUsuario(novoUsuario);
     }
+    public boolean logaUsuario(String email, String senha){
+        if(!email.equalsIgnoreCase("seuemail@gmail.com") && !senha.equalsIgnoreCase("suasenha")){
+        if(email.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Insira um email válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(senha.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Sua senha deve conter no minimo 8 de tamanho, letra maiúscula e minúscula, número, e um caracter especial!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return this.dao.logaUsuario(email, senha);
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return false;
+    }
     
 }
