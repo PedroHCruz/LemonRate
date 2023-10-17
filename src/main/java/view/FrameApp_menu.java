@@ -4,17 +4,59 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.ScrollPane;
+import java.util.Hashtable;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author 0068961
  */
 public class FrameApp_menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrameApp_menu
-     */
+    private static JScrollPane painelRolagem;
+    private static CardLayout baralhoPanel;
+    private static JPanel panelTroca;
+    private static JPanel head;
+    private static Hashtable<String,JPanel> historicoPanel;
+    
+    
     public FrameApp_menu() {
         initComponents();
+        config();
+        trocaPanel("home", new Menu());
+    }
+    
+    public void config(){
+        this.setLayout(new BorderLayout());
+        baralhoPanel = new CardLayout();
+        painelRolagem = new JScrollPane();
+        panelTroca = new JPanel(baralhoPanel);
+        historicoPanel = new Hashtable<>();
+        this.add(painelRolagem);
+        painelRolagem.setViewportView(this.panelTroca);
+        painelRolagem.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        painelRolagem.getVerticalScrollBar().setUnitIncrement(25);
+        head = new JPanel();
+        head.setBackground(Color.red);
+        head.setSize(1250,172);
+        head.setLocation(0, 0);
+    }
+    
+    public static void trocaPanel(String nome, JPanel novoPainel){
+        if(!historicoPanel.containsKey(nome)){
+            panelTroca.add(novoPainel, nome);
+            baralhoPanel.show(panelTroca, nome);
+            panelTroca.setPreferredSize(novoPainel.getPreferredSize());
+            historicoPanel.put(nome, novoPainel);
+        } else {
+            baralhoPanel.show(panelTroca, nome);
+            panelTroca.setPreferredSize(historicoPanel.get(nome).getPreferredSize());
+        }
     }
 
     /**
@@ -27,6 +69,8 @@ public class FrameApp_menu extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -37,7 +81,7 @@ public class FrameApp_menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 788, Short.MAX_VALUE)
         );
 
         pack();
@@ -55,7 +99,7 @@ public class FrameApp_menu extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
