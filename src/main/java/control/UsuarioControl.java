@@ -31,7 +31,7 @@ public class UsuarioControl {
                 !Pattern.compile("[0-9]").matcher(senha).find() ||
                 !Pattern.compile("[A-Za-z]").matcher(senha).find() ||
                 !Pattern.compile("[^a-zA-Z0-9\\s]").matcher(senha).find()){
-            JOptionPane.showMessageDialog(null, "Sua senha deve conter letra maiúscula e minúscula, número, e um caracter especial!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Sua senha deve conter 8 caracteres, incluindo letra maiúscula e minúscula, número, e um caracter especial!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         Usuario novoUsuario = new Usuario(nome, email, senha);

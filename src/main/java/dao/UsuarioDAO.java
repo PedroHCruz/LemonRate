@@ -24,7 +24,7 @@ public class UsuarioDAO {
     }
 
     public boolean cadastraUsuario(Usuario novoUsuario) {
-        String sql = "INSERT INTO usuario(nome, email, senha) VALUES(?,?,?);";
+        String sql = "INSERT INTO lemonrate.usuario(nome, email, senha) VALUES(?,?,?);";
 
         try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, novoUsuario.getNome());
@@ -39,7 +39,7 @@ public class UsuarioDAO {
     }
 
     public boolean logaUsuario(String email, String senha) {
-        String sql = "SELECT email,senha FROM usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
+        String sql = "SELECT email,senha FROM lemonrate.usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
         try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             ResultSet resultadoBD = trans.executeQuery();
 
