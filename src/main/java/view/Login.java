@@ -235,7 +235,7 @@ public class Login extends javax.swing.JPanel {
         boolean ok = this.usuarioControl.logaUsuario(email, senha);
         
         if(ok == true){
-            FrameApp_menu janela = new FrameApp_menu();
+            FrameApp_pages janela = new FrameApp_pages();
             janela.setVisible(true);
             
         } else {

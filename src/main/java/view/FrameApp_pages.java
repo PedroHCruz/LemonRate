@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
  *
  * @author 0068961
  */
-public class FrameApp_menu extends javax.swing.JFrame {
+public class FrameApp_pages extends javax.swing.JFrame {
 
     private static JScrollPane painelRolagem;
     private static CardLayout baralhoPanel;
@@ -24,7 +24,7 @@ public class FrameApp_menu extends javax.swing.JFrame {
     private static Hashtable<String,JPanel> historicoPanel;
     
     
-    public FrameApp_menu() {
+    public FrameApp_pages() {
         initComponents();
         config();
         trocaPanel("home", new Menu());
@@ -72,7 +72,7 @@ public class FrameApp_menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1267, Short.MAX_VALUE)
+            .addGap(0, 1270, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,20 +100,21 @@ public class FrameApp_menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameApp_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_pages.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameApp_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_pages.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameApp_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_pages.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameApp_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameApp_pages.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameApp_menu().setVisible(true);
+                new FrameApp_pages().setVisible(true);
             }
         });
     }
