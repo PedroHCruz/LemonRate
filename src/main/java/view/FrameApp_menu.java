@@ -21,7 +21,6 @@ public class FrameApp_menu extends javax.swing.JFrame {
     private static JScrollPane painelRolagem;
     private static CardLayout baralhoPanel;
     private static JPanel panelTroca;
-    private static JPanel head;
     private static Hashtable<String,JPanel> historicoPanel;
     
     
@@ -41,10 +40,6 @@ public class FrameApp_menu extends javax.swing.JFrame {
         painelRolagem.setViewportView(this.panelTroca);
         painelRolagem.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         painelRolagem.getVerticalScrollBar().setUnitIncrement(25);
-        head = new JPanel();
-        head.setBackground(Color.red);
-        head.setSize(1250,172);
-        head.setLocation(0, 0);
     }
     
     public static void trocaPanel(String nome, JPanel novoPainel){
@@ -70,14 +65,13 @@ public class FrameApp_menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setUndecorated(true);
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1267, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
