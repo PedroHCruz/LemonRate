@@ -22,20 +22,21 @@ import model.Usuario;
  */
 public class Perfil extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Menu
-     */
+    Usuario userSelecionado;
+    
     public Perfil() {
         initComponents();
     }
 
     public Perfil(Usuario userSelecionado) {
+        this.userSelecionado = userSelecionado;
         initComponents();
-        config(userSelecionado);
+        config(this.userSelecionado);
     }
 
     public void config(Usuario userSelecionado) {
         String nomeUsuario = userSelecionado.getNome();
+        String emailUsuario = userSelecionado.getEmail();
         String primeiroNome = nomeUsuario.split(" ")[0];
         primeiroNome = primeiroNome.substring(0, 1).toUpperCase().concat(primeiroNome.substring(1));
         this.nomeTxt.setText(primeiroNome);
@@ -45,6 +46,7 @@ public class Perfil extends javax.swing.JPanel {
         fotoUser.setText("");
         fotoUser.setIcon(profilePic);
         Fnome.setText(nomeUsuario);
+        Femail.setText(emailUsuario);
     }
 
     /*
@@ -76,21 +78,33 @@ public class Perfil extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sexoGroup = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         fotoUser = new javax.swing.JLabel();
         fundo = new javax.swing.JPanel();
         nomeTxt = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaMidia = new javax.swing.JList<>();
         jSeparator1 = new javax.swing.JSeparator();
         midiaTxt = new javax.swing.JLabel();
         btn_verDetalhes = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         txtNome = new javax.swing.JLabel();
-        Fnome = new javax.swing.JTextField();
+        Femail = new javax.swing.JTextField();
         Fdata = new javax.swing.JFormattedTextField();
         txtData = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        Fmasculino = new javax.swing.JRadioButton();
+        Ffeminino = new javax.swing.JRadioButton();
+        Foutro = new javax.swing.JRadioButton();
+        Fnome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        FsobreMim = new javax.swing.JTextArea();
+        txtSobreMim = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaMidia = new javax.swing.JList<>();
+        btn_salvar = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1270, 3000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,11 +136,6 @@ public class Perfil extends javax.swing.JPanel {
         nomeTxt.setText("<NOME USUÁRIO>");
         jPanel3.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
 
-        listaMidia.setBackground(new java.awt.Color(250, 250, 250));
-        jScrollPane1.setViewportView(listaMidia);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 690, 420));
-
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 10, 500));
 
@@ -139,6 +148,7 @@ public class Perfil extends javax.swing.JPanel {
         btn_verDetalhes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_verDetalhes.setContentAreaFilled(false);
         btn_verDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_verDetalhes.setEnabled(false);
         btn_verDetalhes.setFocusable(false);
         btn_verDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,11 +160,12 @@ public class Perfil extends javax.swing.JPanel {
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 530, 10));
 
         txtNome.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        txtNome.setText("Nome");
+        txtNome.setText("Nome*:");
         jPanel3.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        Fnome.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel3.add(Fnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 500, -1));
+        Femail.setBackground(new java.awt.Color(250, 250, 250));
+        Femail.setEnabled(false);
+        jPanel3.add(Femail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 500, -1));
 
         Fdata.setBackground(new java.awt.Color(250, 250, 250));
         try {
@@ -163,39 +174,169 @@ public class Perfil extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         Fdata.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Fdata.setText("  /  /    ");
+        Fdata.setEnabled(false);
         jPanel3.add(Fdata, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 130, -1));
 
-        txtData.setText("Data de nascimento");
+        txtData.setText("Data de nascimento:");
         jPanel3.add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+
+        jLabel1.setText("Sexo:");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+
+        Fmasculino.setBackground(new java.awt.Color(250, 250, 250));
+        sexoGroup.add(Fmasculino);
+        Fmasculino.setText("Masculino");
+        Fmasculino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fmasculino.setEnabled(false);
+        Fmasculino.setFocusable(false);
+        jPanel3.add(Fmasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
+
+        Ffeminino.setBackground(new java.awt.Color(250, 250, 250));
+        sexoGroup.add(Ffeminino);
+        Ffeminino.setText("Feminino");
+        Ffeminino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Ffeminino.setEnabled(false);
+        Ffeminino.setFocusable(false);
+        jPanel3.add(Ffeminino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+
+        Foutro.setBackground(new java.awt.Color(250, 250, 250));
+        sexoGroup.add(Foutro);
+        Foutro.setText("Outro");
+        Foutro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Foutro.setEnabled(false);
+        Foutro.setFocusable(false);
+        jPanel3.add(Foutro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+
+        Fnome.setBackground(new java.awt.Color(250, 250, 250));
+        Fnome.setEnabled(false);
+        jPanel3.add(Fnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 500, -1));
+
+        txtEmail.setText("Email*:");
+        jPanel3.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
+
+        FsobreMim.setBackground(new java.awt.Color(250, 250, 250));
+        FsobreMim.setColumns(20);
+        FsobreMim.setRows(5);
+        FsobreMim.setEnabled(false);
+        jScrollPane2.setViewportView(FsobreMim);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 500, 150));
+
+        txtSobreMim.setText("Sobre mim:");
+        jPanel3.add(txtSobreMim, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(250, 250, 250));
+        jScrollPane1.setBorder(null);
+
+        listaMidia.setBackground(new java.awt.Color(250, 250, 250));
+        listaMidia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        listaMidia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(listaMidia);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 680, 420));
+
+        btn_salvar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn_salvar.setText("Salvar");
+        btn_salvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn_salvar.setContentAreaFilled(false);
+        btn_salvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_salvar.setEnabled(false);
+        btn_salvar.setFocusable(false);
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 720, 150, 30));
+
+        btn_editar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn_editar.setText("Editar");
+        btn_editar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn_editar.setContentAreaFilled(false);
+        btn_editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editar.setFocusable(false);
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 160, 30));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_verDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verDetalhesActionPerformed
         if (this.listaMidia.getSelectedIndex() == -1) {
+            this.listaMidia.setEnabled(false);
             JOptionPane.showMessageDialog(null, "Selecione uma mídia!", "Seleção", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
+            this.listaMidia.setEnabled(true);
         }
     }//GEN-LAST:event_btn_verDetalhesActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        this.Fnome.setEnabled(false);
+        this.Femail.setEnabled(false);
+        this.Fdata.setEnabled(false);
+        this.Fmasculino.setEnabled(false);
+        this.Ffeminino.setEnabled(false);
+        this.Foutro.setEnabled(false);
+        this.FsobreMim.setEnabled(false);
+        this.btn_salvar.setEnabled(false);
+        this.btn_editar.setEnabled(true);
+        
+        String novoNome, novoEmail;
+        char novoGenero = 'N';
+        novoNome = Fnome.getText();
+        novoEmail = Femail.getText();
+        
+        novoGenero = Fmasculino.isSelected() ? 'M' : novoGenero;
+        novoGenero = Ffeminino.isSelected() ? 'M' : novoGenero;
+        novoGenero = Foutro.isSelected() ? 'M' : novoGenero;
+        
+        System.out.println(novoGenero);
+    }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
+        this.Fnome.setEnabled(true);
+        this.Femail.setEnabled(true);
+        this.Fdata.setEnabled(true);
+        this.Fmasculino.setEnabled(true);
+        this.Ffeminino.setEnabled(true);
+        this.Foutro.setEnabled(true);
+        this.FsobreMim.setEnabled(true);
+        this.btn_salvar.setEnabled(true);
+        this.btn_editar.setEnabled(false);
+    }//GEN-LAST:event_btn_editarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fdata;
+    private javax.swing.JTextField Femail;
+    private javax.swing.JRadioButton Ffeminino;
+    private javax.swing.JRadioButton Fmasculino;
     private javax.swing.JTextField Fnome;
+    private javax.swing.JRadioButton Foutro;
+    private javax.swing.JTextArea FsobreMim;
+    private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_verDetalhes;
     private javax.swing.JLabel fotoUser;
     private javax.swing.JPanel fundo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JList<String> listaMidia;
     private javax.swing.JLabel midiaTxt;
     private javax.swing.JLabel nomeTxt;
+    private javax.swing.ButtonGroup sexoGroup;
     private javax.swing.JLabel txtData;
+    private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtNome;
+    private javax.swing.JLabel txtSobreMim;
     // End of variables declaration//GEN-END:variables
 }

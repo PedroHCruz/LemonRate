@@ -16,8 +16,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private int idade;
-    private String genero;
+    private char genero;
     private Date nascimento;
 
     public Usuario(String nome, String email, String senha) {
@@ -46,4 +45,22 @@ public class Usuario {
         return senha;
     }
 
+    public char getGenero() {
+        return genero;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    
+    
 }
