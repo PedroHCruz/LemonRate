@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import model.Usuario;
 
 /**
  *
@@ -22,12 +23,19 @@ public class Menu extends javax.swing.JPanel {
      */
     public Menu() {
         initComponents();
-        setImages();
+    }
+    
+    public Menu(Usuario userSelecionado){
+        initComponents();
+        config(userSelecionado);
     }
 
-    public void setImages() {
+    public void config(Usuario userSelecionado) {
+        String nomeUsuario = userSelecionado.getNome();
+        String primeiroNome = nomeUsuario.split(" ")[0];
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         lbl_logo.setIcon(imgLogo);
+        nomeTxt.setText(primeiroNome);
     }
 
     /*
@@ -62,6 +70,8 @@ public class Menu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
+        nomeTxt = new javax.swing.JLabel();
+        olaTxt = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -73,23 +83,20 @@ public class Menu extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1250, 3000));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(475, 475, 475)
-                .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(475, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 6, 300, 167));
+
+        nomeTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        nomeTxt.setForeground(new java.awt.Color(255, 255, 255));
+        nomeTxt.setText("<Nome do Usuário>");
+        jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+
+        olaTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        olaTxt.setForeground(new java.awt.Color(255, 255, 255));
+        olaTxt.setText("Olá");
+        jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 204));
 
@@ -124,12 +131,10 @@ public class Menu extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +142,7 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2253, Short.MAX_VALUE))
+                .addGap(0, 2259, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -150,5 +155,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel nomeTxt;
+    private javax.swing.JLabel olaTxt;
     // End of variables declaration//GEN-END:variables
 }

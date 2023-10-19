@@ -7,6 +7,7 @@ package view;
 import control.UsuarioControl;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.Usuario;
 
 /**
  *
@@ -231,11 +232,12 @@ public class Login extends javax.swing.JPanel {
     private void entrarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarBTNActionPerformed
         String email = emailF.getText();
         String senha = String.valueOf(senhaF.getPassword());
-        
         boolean ok = this.usuarioControl.logaUsuario(email, senha);
         
         if(ok == true){
-            FrameApp_pages janela = new FrameApp_pages();
+            Usuario userLogado;
+            userLogado = this.usuarioControl.getUsuario(email, senha);
+            FrameApp_pages janela = new FrameApp_pages(userLogado);
             janela.setVisible(true);
             
         } else {

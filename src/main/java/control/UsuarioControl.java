@@ -54,4 +54,8 @@ public class UsuarioControl {
         return false;
     }
     
+    public Usuario getUsuario(String email, String senha){
+        return this.dao.getUsuario(email, senha);
+    }
+    
 }

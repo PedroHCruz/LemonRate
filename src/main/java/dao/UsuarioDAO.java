@@ -26,7 +26,7 @@ public class UsuarioDAO {
     public boolean cadastraUsuario(Usuario novoUsuario) {
         String sql = "INSERT INTO lemonrate.usuario(nome, email, senha) VALUES(?,?,?);";
 
-        try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
+        try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, novoUsuario.getNome());
             trans.setString(2, novoUsuario.getEmail());
             trans.setString(3, novoUsuario.getSenha());
@@ -40,11 +40,10 @@ public class UsuarioDAO {
 
     public boolean logaUsuario(String email, String senha) {
         String sql = "SELECT email,senha FROM lemonrate.usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
-        try (PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
+        try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
             ResultSet resultadoBD = trans.executeQuery();
 
             if (resultadoBD.next()) {
-
                 return true;
             } else {
 
@@ -55,5 +54,27 @@ public class UsuarioDAO {
             return false;
         }
 
+    }
+
+    public Usuario getUsuario(String email, String senha) {
+        String sql = "SELECT * FROM lemonrate.usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
+        try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
+            ResultSet resultadoBD = trans.executeQuery();
+
+            if (resultadoBD.next()) {
+                String nome = resultadoBD.getString("nome");
+                int id = resultadoBD.getInt("id");
+                Usuario usuarioSelecionado = new Usuario(nome, email, senha);
+                usuarioSelecionado.setId(id);
+                System.out.println("deu");
+                return usuarioSelecionado;
+            } else {
+                System.out.println("nao deu");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("nao deu msm");
+            return null;
+        }
     }
 }

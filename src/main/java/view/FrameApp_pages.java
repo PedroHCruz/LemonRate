@@ -11,6 +11,7 @@ import java.awt.ScrollPane;
 import java.util.Hashtable;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import model.Usuario;
 
 /**
  *
@@ -22,13 +23,19 @@ public class FrameApp_pages extends javax.swing.JFrame {
     private static CardLayout baralhoPanel;
     private static JPanel panelTroca;
     private static Hashtable<String,JPanel> historicoPanel;
+    private static Usuario usuarioSelecionado;
     
     
     public FrameApp_pages() {
         initComponents();
-        config();
-        trocaPanel("home", new Menu());
     }
+    public FrameApp_pages(Usuario userSelecionado){
+        this.usuarioSelecionado = userSelecionado;
+        initComponents();
+        config();
+        trocaPanel("home", new Menu(this.usuarioSelecionado));
+    }
+    
     
     public void config(){
         this.setLayout(new BorderLayout());
