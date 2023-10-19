@@ -21,21 +21,21 @@ public class FactoryPostgres {
     private static String USER = "aula";
     private static String PASS = "aula";
 
-    public static void getIP(){
+    public static void getIP() {
         InetAddress addr;
-        try{
-        addr = InetAddress.getLocalHost();
-        } catch (UnknownHostException ex){
+        try {
+            addr = InetAddress.getLocalHost();
+        } catch (UnknownHostException ex) {
             return;
         }
         String ip = addr.getHostAddress();
-        if(ip.contains("10.90")){
+        if (ip.contains("10.90")) {
             URL = "jdbc:postgresql://10.90.24.56:5432/aula";
         } else {
             URL = "jdbc:postgresql://200.18.128.56:5432/aula";
         }
     }
-    
+
     public static Connection getConexaoPostgres() {
         getIP();
         if (conexaoBD == null) {
