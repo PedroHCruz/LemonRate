@@ -90,6 +90,7 @@ public class Cadastro extends javax.swing.JPanel {
         cadastrarBTN.setText("Cadastrar");
         cadastrarBTN.setBorder(null);
         cadastrarBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarBTN.setFocusable(false);
         cadastrarBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cadastrarBTNMouseEntered(evt);

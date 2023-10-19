@@ -21,16 +21,17 @@ import model.Usuario;
  */
 public class Menu extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Menu
-     */
+    
+    Usuario userselecionado;
+    
     public Menu() {
         initComponents();
     }
 
     public Menu(Usuario userSelecionado) {
+        this.userselecionado = userSelecionado;
         initComponents();
-        config(userSelecionado);
+        config(userselecionado);
     }
 
     public void config(Usuario userSelecionado) {
@@ -86,7 +87,7 @@ public class Menu extends javax.swing.JPanel {
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1250, 3000));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
@@ -136,9 +137,9 @@ public class Menu extends javax.swing.JPanel {
         olaTxt.setText("Olá,");
         jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -210,9 +211,9 @@ public class Menu extends javax.swing.JPanel {
 
     private void menuTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
 
-        FrameApp_pages.trocaPanel("Perfil", new Perfil());
+        FrameApp_home.trocaPanel("Perfil", new Perfil(userselecionado));
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        FrameApp_pages.desabilitaScroll();
+        FrameApp_home.desabilitaScroll();
     }//GEN-LAST:event_menuTxtMouseClicked
 
     private void fecharJanela() {

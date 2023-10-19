@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author 0068961
@@ -14,6 +16,9 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private int idade;
+    private String genero;
+    private Date nascimento;
 
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;

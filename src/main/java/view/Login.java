@@ -89,6 +89,7 @@ public class Login extends javax.swing.JPanel {
         entrarBTN.setText("Entrar");
         entrarBTN.setBorder(null);
         entrarBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrarBTN.setFocusable(false);
         entrarBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarBTNMouseClicked(evt);
@@ -235,7 +236,7 @@ public class Login extends javax.swing.JPanel {
         if (ok == true) {
             Usuario userLogado;
             userLogado = this.usuarioControl.getUsuario(email, senha);
-            FrameApp_pages janela = new FrameApp_pages(userLogado);
+            FrameApp_home janela = new FrameApp_home(userLogado);
             janela.setVisible(true);
             JFrame frameParent = (JFrame) SwingUtilities.getWindowAncestor(this);
             frameParent.dispose();
