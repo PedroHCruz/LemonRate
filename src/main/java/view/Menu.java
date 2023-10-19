@@ -4,12 +4,15 @@
  */
 package view;
 
+import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import model.Usuario;
 
 /**
@@ -33,6 +36,7 @@ public class Menu extends javax.swing.JPanel {
     public void config(Usuario userSelecionado) {
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
+        primeiroNome = primeiroNome.substring(0,1).toUpperCase().concat(primeiroNome.substring(1));
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         lbl_logo.setIcon(imgLogo);
         nomeTxt.setText(primeiroNome);
@@ -71,6 +75,8 @@ public class Menu extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
         nomeTxt = new javax.swing.JLabel();
+        menuTxt = new javax.swing.JLabel();
+        deslogarTxt = new javax.swing.JLabel();
         olaTxt = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -91,12 +97,46 @@ public class Menu extends javax.swing.JPanel {
         nomeTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
         nomeTxt.setForeground(new java.awt.Color(255, 255, 255));
         nomeTxt.setText("<Nome do Usuário>");
-        jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        menuTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        menuTxt.setForeground(new java.awt.Color(255, 255, 255));
+        menuTxt.setText("Meu Perfil");
+        menuTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menuTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menuTxtMouseExited(evt);
+            }
+        });
+        jPanel2.add(menuTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 70, -1, -1));
+
+        deslogarTxt.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        deslogarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        deslogarTxt.setText("Sair");
+        deslogarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deslogarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deslogarTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deslogarTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deslogarTxtMouseExited(evt);
+            }
+        });
+        jPanel2.add(deslogarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         olaTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
         olaTxt.setForeground(new java.awt.Color(255, 255, 255));
-        olaTxt.setText("Olá");
-        jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        olaTxt.setText("Olá,");
+        jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 204));
 
@@ -148,13 +188,46 @@ public class Menu extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseEntered
+        this.menuTxt.setForeground(new Color(153, 153, 153));
+    }//GEN-LAST:event_menuTxtMouseEntered
 
+    private void menuTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseExited
+        this.menuTxt.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_menuTxtMouseExited
+
+    private void deslogarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseEntered
+        this.deslogarTxt.setForeground(new Color(153, 153, 153));
+    }//GEN-LAST:event_deslogarTxtMouseEntered
+
+    private void deslogarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseExited
+        this.deslogarTxt.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_deslogarTxtMouseExited
+
+    private void deslogarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseClicked
+        fecharJanela();
+        FrameApp_Login janelaLogin = new FrameApp_Login();
+        janelaLogin.setVisible(true);
+    }//GEN-LAST:event_deslogarTxtMouseClicked
+
+    private void menuTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
+
+        FrameApp_pages.trocaPanel("Perfil", new Perfil());
+    }//GEN-LAST:event_menuTxtMouseClicked
+
+
+    private void fecharJanela(){
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        parentFrame.dispose();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel deslogarTxt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel menuTxt;
     private javax.swing.JLabel nomeTxt;
     private javax.swing.JLabel olaTxt;
     // End of variables declaration//GEN-END:variables

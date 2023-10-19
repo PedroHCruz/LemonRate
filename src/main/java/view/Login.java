@@ -6,7 +6,9 @@ package view;
 
 import control.UsuarioControl;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import model.Usuario;
 
 /**
@@ -239,6 +241,8 @@ public class Login extends javax.swing.JPanel {
             userLogado = this.usuarioControl.getUsuario(email, senha);
             FrameApp_pages janela = new FrameApp_pages(userLogado);
             janela.setVisible(true);
+            JFrame frameParent = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frameParent.dispose();
             
         } else {
             
