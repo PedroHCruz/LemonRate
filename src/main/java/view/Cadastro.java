@@ -6,7 +6,10 @@ package view;
 
 import control.UsuarioControl;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,7 +21,16 @@ public class Cadastro extends javax.swing.JPanel {
 
     public Cadastro() {
         initComponents();
+        config();
         this.usuarioControl = new UsuarioControl();
+    }
+
+    public void config() {
+        ImageIcon icon = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
+        ImageIcon bg = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundo_login.png");
+        icon.setImage(icon.getImage().getScaledInstance(80, 80, 100));
+        this.lblicon.setIcon(icon);
+        this.lblFundo.setIcon(bg);
     }
 
     /**
@@ -41,15 +53,20 @@ public class Cadastro extends javax.swing.JPanel {
         emailTxt = new javax.swing.JLabel();
         senhaTxt = new javax.swing.JLabel();
         senha1Txt = new javax.swing.JLabel();
+        lblicon = new javax.swing.JLabel();
+        xTxt = new javax.swing.JLabel();
+        lblFundo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(398, 598));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bemvindoTxt.setBackground(new java.awt.Color(102, 102, 102));
         bemvindoTxt.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         bemvindoTxt.setForeground(new java.awt.Color(102, 102, 102));
         bemvindoTxt.setText("Criar Conta");
+        jPanel2.add(bemvindoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
         emailF.setBackground(new java.awt.Color(230, 230, 230));
         emailF.setForeground(new java.awt.Color(153, 153, 153));
@@ -65,18 +82,28 @@ public class Cadastro extends javax.swing.JPanel {
                 emailFFocusLost(evt);
             }
         });
+        jPanel2.add(emailF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 340, 42));
 
         cadastrarBTN.setBackground(new java.awt.Color(230, 230, 230));
         cadastrarBTN.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        cadastrarBTN.setForeground(new java.awt.Color(102, 102, 102));
+        cadastrarBTN.setForeground(new java.awt.Color(0, 51, 0));
         cadastrarBTN.setText("Cadastrar");
         cadastrarBTN.setBorder(null);
         cadastrarBTN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarBTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cadastrarBTNMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cadastrarBTNMouseExited(evt);
+            }
+        });
         cadastrarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarBTNActionPerformed(evt);
             }
         });
+        jPanel2.add(cadastrarBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 466, 340, 41));
 
         senhaF.setBackground(new java.awt.Color(230, 230, 230));
         senhaF.setForeground(new java.awt.Color(153, 153, 153));
@@ -96,6 +123,8 @@ public class Cadastro extends javax.swing.JPanel {
                 senhaFActionPerformed(evt);
             }
         });
+        jPanel2.add(senhaF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 340, 42));
+        senhaF.setEchoChar((char)0);
 
         senhaF1.setBackground(new java.awt.Color(230, 230, 230));
         senhaF1.setForeground(new java.awt.Color(153, 153, 153));
@@ -115,6 +144,8 @@ public class Cadastro extends javax.swing.JPanel {
                 senhaF1ActionPerformed(evt);
             }
         });
+        jPanel2.add(senhaF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 340, 42));
+        senhaF1.setEchoChar((char)0);
 
         nomeF.setBackground(new java.awt.Color(230, 230, 230));
         nomeF.setForeground(new java.awt.Color(153, 153, 153));
@@ -130,10 +161,12 @@ public class Cadastro extends javax.swing.JPanel {
                 nomeFFocusLost(evt);
             }
         });
+        jPanel2.add(nomeF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 340, 42));
 
         membroTxt.setBackground(new java.awt.Color(153, 153, 153));
         membroTxt.setForeground(new java.awt.Color(153, 153, 153));
         membroTxt.setText("Já é um membro?");
+        jPanel2.add(membroTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 519, -1, -1));
 
         acessarcontaTxt.setBackground(new java.awt.Color(51, 255, 51));
         acessarcontaTxt.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -145,90 +178,58 @@ public class Cadastro extends javax.swing.JPanel {
                 acessarcontaTxtMouseClicked(evt);
             }
         });
+        jPanel2.add(acessarcontaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 520, -1, -1));
 
         nomeTxt.setBackground(new java.awt.Color(153, 153, 153));
         nomeTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         nomeTxt.setForeground(new java.awt.Color(153, 153, 153));
         nomeTxt.setText("Nome");
+        jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         emailTxt.setBackground(new java.awt.Color(153, 153, 153));
         emailTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         emailTxt.setForeground(new java.awt.Color(153, 153, 153));
         emailTxt.setText("Email");
+        jPanel2.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         senhaTxt.setBackground(new java.awt.Color(153, 153, 153));
         senhaTxt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         senhaTxt.setForeground(new java.awt.Color(153, 153, 153));
         senhaTxt.setText("Senha");
+        jPanel2.add(senhaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         senha1Txt.setBackground(new java.awt.Color(153, 153, 153));
         senha1Txt.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         senha1Txt.setForeground(new java.awt.Color(153, 153, 153));
         senha1Txt.setText("Repita sua senha");
+        jPanel2.add(senha1Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        jPanel2.add(lblicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(senha1Txt)
-                    .addComponent(senhaTxt)
-                    .addComponent(emailTxt)
-                    .addComponent(nomeTxt)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(membroTxt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(acessarcontaTxt))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nomeF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bemvindoTxt)
-                        .addComponent(emailF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(senhaF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                            .addComponent(cadastrarBTN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senhaF1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))))
-                .addGap(30, 30, 30))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(bemvindoTxt)
-                .addGap(26, 26, 26)
-                .addComponent(nomeTxt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(emailTxt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(emailF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(senhaTxt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(senha1Txt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaF1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(cadastrarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(membroTxt)
-                    .addComponent(acessarcontaTxt))
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-
-        senhaF.setEchoChar((char)0);
-        senhaF1.setEchoChar((char)0);
+        xTxt.setBackground(new java.awt.Color(204, 204, 204));
+        xTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        xTxt.setForeground(new java.awt.Color(0, 51, 0));
+        xTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xTxt.setText("X");
+        xTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        xTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                xTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                xTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                xTxtMouseExited(evt);
+            }
+        });
+        jPanel2.add(xTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 30, 40));
+        jPanel2.add(lblFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,6 +331,27 @@ public class Cadastro extends javax.swing.JPanel {
 
     }//GEN-LAST:event_cadastrarBTNActionPerformed
 
+    private void xTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xTxtMouseEntered
+        this.xTxt.setForeground(Color.white);
+    }//GEN-LAST:event_xTxtMouseEntered
+
+    private void xTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xTxtMouseExited
+        this.xTxt.setForeground(new Color(0,51,0));
+    }//GEN-LAST:event_xTxtMouseExited
+
+    private void xTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xTxtMouseClicked
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        parentFrame.dispose();
+    }//GEN-LAST:event_xTxtMouseClicked
+
+    private void cadastrarBTNMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseEntered
+        this.cadastrarBTN.setForeground(Color.white);
+    }//GEN-LAST:event_cadastrarBTNMouseEntered
+
+    private void cadastrarBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseExited
+        this.cadastrarBTN.setForeground(new Color(0,51,0));
+    }//GEN-LAST:event_cadastrarBTNMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acessarcontaTxt;
@@ -338,6 +360,8 @@ public class Cadastro extends javax.swing.JPanel {
     private javax.swing.JTextField emailF;
     private javax.swing.JLabel emailTxt;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblFundo;
+    private javax.swing.JLabel lblicon;
     private javax.swing.JLabel membroTxt;
     private javax.swing.JTextField nomeF;
     private javax.swing.JLabel nomeTxt;
@@ -345,5 +369,6 @@ public class Cadastro extends javax.swing.JPanel {
     private javax.swing.JPasswordField senhaF;
     private javax.swing.JPasswordField senhaF1;
     private javax.swing.JLabel senhaTxt;
+    private javax.swing.JLabel xTxt;
     // End of variables declaration//GEN-END:variables
 }

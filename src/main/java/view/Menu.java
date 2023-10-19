@@ -92,12 +92,12 @@ public class Menu extends javax.swing.JPanel {
         lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 6, 300, 167));
 
-        nomeTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        nomeTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         nomeTxt.setForeground(new java.awt.Color(255, 255, 255));
         nomeTxt.setText("<Nome do Usuário>");
         jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
-        menuTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        menuTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         menuTxt.setForeground(new java.awt.Color(255, 255, 255));
         menuTxt.setText("Meu Perfil");
         menuTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,7 +114,7 @@ public class Menu extends javax.swing.JPanel {
         });
         jPanel2.add(menuTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 70, -1, -1));
 
-        deslogarTxt.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        deslogarTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         deslogarTxt.setForeground(new java.awt.Color(255, 255, 255));
         deslogarTxt.setText("Sair");
         deslogarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -131,7 +131,7 @@ public class Menu extends javax.swing.JPanel {
         });
         jPanel2.add(deslogarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        olaTxt.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
+        olaTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         olaTxt.setForeground(new java.awt.Color(255, 255, 255));
         olaTxt.setText("Olá,");
         jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
@@ -195,7 +195,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_menuTxtMouseExited
 
     private void deslogarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseEntered
-        this.deslogarTxt.setForeground(new Color(153, 153, 153));
+        this.deslogarTxt.setForeground(Color.red);
     }//GEN-LAST:event_deslogarTxtMouseEntered
 
     private void deslogarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseExited
@@ -211,6 +211,8 @@ public class Menu extends javax.swing.JPanel {
     private void menuTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
 
         FrameApp_pages.trocaPanel("Perfil", new Perfil());
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        FrameApp_pages.desabilitaScroll();
     }//GEN-LAST:event_menuTxtMouseClicked
 
     private void fecharJanela() {
