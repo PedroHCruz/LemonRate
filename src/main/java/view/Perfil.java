@@ -106,7 +106,7 @@ public class Perfil extends javax.swing.JPanel {
         btn_salvar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1270, 3000));
+        setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
