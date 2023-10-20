@@ -18,6 +18,7 @@ public class Usuario {
     private String senha;
     private char genero;
     private Date nascimento;
+    private String descricao;
 
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
@@ -61,6 +62,15 @@ public class Usuario {
         this.nascimento = nascimento;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    
     
     
 }

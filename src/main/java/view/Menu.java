@@ -37,7 +37,6 @@ public class Menu extends javax.swing.JPanel {
     public void config(Usuario userSelecionado) {
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
-        primeiroNome = primeiroNome.substring(0, 1).toUpperCase().concat(primeiroNome.substring(1));
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         lbl_logo.setIcon(imgLogo);
         nomeTxt.setText(primeiroNome);

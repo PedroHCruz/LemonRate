@@ -4,12 +4,19 @@
  */
 package view;
 
+import control.UsuarioControl;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,6 +30,7 @@ import model.Usuario;
 public class Perfil extends javax.swing.JPanel {
 
     Usuario userSelecionado;
+    private static UsuarioControl usuarioControl;
     
     public Perfil() {
         initComponents();
@@ -32,14 +40,14 @@ public class Perfil extends javax.swing.JPanel {
         this.userSelecionado = userSelecionado;
         initComponents();
         config(this.userSelecionado);
+        this.usuarioControl = new UsuarioControl();
     }
 
     public void config(Usuario userSelecionado) {
         String nomeUsuario = userSelecionado.getNome();
         String emailUsuario = userSelecionado.getEmail();
-        String primeiroNome = nomeUsuario.split(" ")[0];
-        primeiroNome = primeiroNome.substring(0, 1).toUpperCase().concat(primeiroNome.substring(1));
-        this.nomeTxt.setText(primeiroNome);
+        String desc = userSelecionado.getDescricao();
+        this.nomeTxt.setText(nomeUsuario);
         ImageIcon profilePic = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\profile_pic.png");
         profilePic.setImage(profilePic.getImage().getScaledInstance(
                 128, 128, 100));
@@ -47,6 +55,22 @@ public class Perfil extends javax.swing.JPanel {
         fotoUser.setIcon(profilePic);
         Fnome.setText(nomeUsuario);
         Femail.setText(emailUsuario);
+        FsobreMim.setText(desc);
+        if(userSelecionado.getNascimento() != null){
+        Fdata.setText(converteDataString(userSelecionado.getNascimento()));
+        }
+        switch (userSelecionado.getGenero()){
+            case 'M':
+                Fmasculino.setSelected(true);
+                break;
+            case 'F':
+                Ffeminino.setSelected(true);
+                break;
+            case 'O':
+                Foutro.setSelected(true);
+                break;
+        }
+        
     }
 
     /*
@@ -275,26 +299,44 @@ public class Perfil extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_verDetalhesActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        this.Fnome.setEnabled(false);
-        this.Femail.setEnabled(false);
-        this.Fdata.setEnabled(false);
-        this.Fmasculino.setEnabled(false);
-        this.Ffeminino.setEnabled(false);
-        this.Foutro.setEnabled(false);
-        this.FsobreMim.setEnabled(false);
-        this.btn_salvar.setEnabled(false);
-        this.btn_editar.setEnabled(true);
-        
-        String novoNome, novoEmail;
-        char novoGenero = 'N';
-        novoNome = Fnome.getText();
-        novoEmail = Femail.getText();
-        
-        novoGenero = Fmasculino.isSelected() ? 'M' : novoGenero;
-        novoGenero = Ffeminino.isSelected() ? 'M' : novoGenero;
-        novoGenero = Foutro.isSelected() ? 'M' : novoGenero;
-        
-        System.out.println(novoGenero);
+        try {
+            this.Fnome.setEnabled(false);
+            this.Femail.setEnabled(false);
+            this.Fdata.setEnabled(false);
+            this.Fmasculino.setEnabled(false);
+            this.Ffeminino.setEnabled(false);
+            this.Foutro.setEnabled(false);
+            this.FsobreMim.setEnabled(false);
+            this.btn_salvar.setEnabled(false);
+            this.btn_editar.setEnabled(true);
+            String novoNome, novoEmail;
+            int id = userSelecionado.getId();
+            char novoGenero = 'N';
+            novoNome = Fnome.getText();
+            novoEmail = Femail.getText();
+            String novaDesc = FsobreMim.getText();
+            Date data = new Date();
+            if(!Fdata.getText().equals("")){
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            data = dateFormat.parse(Fdata.getText());
+            } else {
+                data = null;
+            }
+            novoGenero = Fmasculino.isSelected() ? 'M' : novoGenero;
+            novoGenero = Ffeminino.isSelected() ? 'F' : novoGenero;
+            novoGenero = Foutro.isSelected() ? 'O' : novoGenero;
+            boolean ok = usuarioControl.uptadeUsuario(novoNome, novoEmail, id, novoGenero, novaDesc, data);
+            if(ok == true){
+                nomeTxt.setText(novoNome);
+                JOptionPane.showMessageDialog(null, "Alterações salvas", "Salvo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao fazer as alterações,"
+                        + "preencha todos os campos com *", "Não Salvo"
+                        , JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ParseException ex) {
+            System.err.println("Erro conversão");
+        }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
@@ -309,6 +351,11 @@ public class Perfil extends javax.swing.JPanel {
         this.btn_editar.setEnabled(false);
     }//GEN-LAST:event_btn_editarActionPerformed
 
+    public String converteDataString(Date data){
+        DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = dateformat.format(data);
+        return dataFormatada;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Fdata;

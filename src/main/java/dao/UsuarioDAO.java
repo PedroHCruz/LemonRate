@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import model.Usuario;
 import tools.FactoryPostgres;
 
@@ -64,8 +65,17 @@ public class UsuarioDAO {
             if (resultadoBD.next()) {
                 String nome = resultadoBD.getString("nome");
                 int id = resultadoBD.getInt("id");
+                char gen = 'N';
+                String desc = resultadoBD.getString("sobremim");
+                String genero = "";
+                genero = resultadoBD.getString("genero");
+                gen = genero.charAt(0);
+                Date data = resultadoBD.getDate("datanascimento");
                 Usuario usuarioSelecionado = new Usuario(nome, email, senha);
                 usuarioSelecionado.setId(id);
+                usuarioSelecionado.setDescricao(desc);
+                usuarioSelecionado.setNascimento(data);
+                usuarioSelecionado.setGenero(gen);
                 System.out.println("deu");
                 return usuarioSelecionado;
             } else {
@@ -75,6 +85,22 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println("nao deu msm");
             return null;
+        }
+    }
+    public boolean updateUsuario(int id, String nome, Date data, char genero, String email, String descricao){
+        java.sql.Date dataSql = new java.sql.Date(data.getTime());
+        String sql = "UPDATE lemonrate.usuario SET nome = ?, email = ?, genero = ?, sobremim = ?, datanascimento = ?"
+                + "WHERE id = " + id;
+        try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)){
+            trans.setString(1, nome);
+            trans.setString(2, email);
+            trans.setString(3, String.valueOf(genero));
+            trans.setString(4, descricao);
+            trans.setDate(5, dataSql);
+            trans.executeUpdate();
+            return true;
+        } catch (SQLException ex){
+            return false;
         }
     }
 }

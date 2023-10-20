@@ -5,6 +5,7 @@
 package control;
 
 import dao.UsuarioDAO;
+import java.util.Date;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 import model.Usuario;
@@ -35,6 +36,7 @@ public class UsuarioControl {
             JOptionPane.showMessageDialog(null, "Sua senha deve conter 8 caracteres, incluindo letra maiúscula e minúscula, número, e um caracter especial!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        nome = nome.substring(0,1).toUpperCase().concat(nome.substring(1));
         Usuario novoUsuario = new Usuario(nome, email, senha);
         return this.dao.cadastraUsuario(novoUsuario);
     }
@@ -60,4 +62,12 @@ public class UsuarioControl {
         return this.dao.getUsuario(email, senha);
     }
 
+    public boolean uptadeUsuario(String nome, String email, int id, char genero, String descricao, Date data){
+        if(!nome.equals("") && !email.equals("")){
+            System.out.println("teste1");
+        return this.dao.updateUsuario(id, nome, data, genero, email, descricao);
+        } else {
+            return false;
+        }
+    }
 }
