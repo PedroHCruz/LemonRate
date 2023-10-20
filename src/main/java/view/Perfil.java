@@ -109,7 +109,7 @@ public class Perfil extends javax.swing.JPanel {
         nomeTxt = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         midiaTxt = new javax.swing.JLabel();
-        btn_verDetalhes = new javax.swing.JButton();
+        btn_cadastroMidia = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         txtNome = new javax.swing.JLabel();
@@ -129,6 +129,7 @@ public class Perfil extends javax.swing.JPanel {
         listaMidia = new javax.swing.JList<>();
         btn_salvar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
+        btn_verDetalhes = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,19 +168,18 @@ public class Perfil extends javax.swing.JPanel {
         midiaTxt.setText("Mídias Cadastradas");
         jPanel3.add(midiaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, -1, -1));
 
-        btn_verDetalhes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btn_verDetalhes.setText("Ver Detalhes");
-        btn_verDetalhes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btn_verDetalhes.setContentAreaFilled(false);
-        btn_verDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_verDetalhes.setEnabled(false);
-        btn_verDetalhes.setFocusable(false);
-        btn_verDetalhes.addActionListener(new java.awt.event.ActionListener() {
+        btn_cadastroMidia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn_cadastroMidia.setText("Cadastrar Mídia");
+        btn_cadastroMidia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn_cadastroMidia.setContentAreaFilled(false);
+        btn_cadastroMidia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cadastroMidia.setFocusable(false);
+        btn_cadastroMidia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_verDetalhesActionPerformed(evt);
+                btn_cadastroMidiaActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_verDetalhes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 730, 190, 30));
+        jPanel3.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 730, 190, 30));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 700, 10));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 530, 10));
 
@@ -286,17 +286,26 @@ public class Perfil extends javax.swing.JPanel {
         });
         jPanel3.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 160, 30));
 
+        btn_verDetalhes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn_verDetalhes.setText("Ver Detalhes/Editar");
+        btn_verDetalhes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn_verDetalhes.setContentAreaFilled(false);
+        btn_verDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_verDetalhes.setEnabled(false);
+        btn_verDetalhes.setFocusable(false);
+        btn_verDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verDetalhesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_verDetalhes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 730, 190, 30));
+
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_verDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verDetalhesActionPerformed
-        if (this.listaMidia.getSelectedIndex() == -1) {
-            this.listaMidia.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Selecione uma mídia!", "Seleção", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            this.listaMidia.setEnabled(true);
-        }
-    }//GEN-LAST:event_btn_verDetalhesActionPerformed
+    private void btn_cadastroMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidiaActionPerformed
+        FrameApp_home.trocaPanel("CadastroMidia", new CadastroMidia());
+    }//GEN-LAST:event_btn_cadastroMidiaActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         try {
@@ -351,6 +360,10 @@ public class Perfil extends javax.swing.JPanel {
         this.btn_editar.setEnabled(false);
     }//GEN-LAST:event_btn_editarActionPerformed
 
+    private void btn_verDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verDetalhesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verDetalhesActionPerformed
+
     public String converteDataString(Date data){
         DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         String dataFormatada = dateformat.format(data);
@@ -365,6 +378,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JTextField Fnome;
     private javax.swing.JRadioButton Foutro;
     private javax.swing.JTextArea FsobreMim;
+    private javax.swing.JButton btn_cadastroMidia;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_verDetalhes;
