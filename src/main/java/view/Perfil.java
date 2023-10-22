@@ -179,7 +179,7 @@ public class Perfil extends javax.swing.JPanel {
                 btn_cadastroMidiaActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 730, 190, 30));
+        jPanel3.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 680, 190, 30));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 700, 10));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 530, 10));
 

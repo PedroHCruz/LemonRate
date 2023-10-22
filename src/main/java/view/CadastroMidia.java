@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author 0068961
@@ -15,6 +17,12 @@ public class CadastroMidia extends javax.swing.JPanel {
      */
     public CadastroMidia() {
         initComponents();
+        config();
+    }
+    
+    public void config(){
+        ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\backmidia.png");
+        this.backmidia.setIcon(imgLogo);
     }
 
     /**
@@ -30,6 +38,7 @@ public class CadastroMidia extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btn_cadastroMidia = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        backmidia = new javax.swing.JLabel();
         Fnome = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -46,6 +55,12 @@ public class CadastroMidia extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        Fnome1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        Fnome2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        Fnome3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +79,7 @@ public class CadastroMidia extends javax.swing.JPanel {
                 btn_cadastroMidiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, 250, 30));
+        jPanel1.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 710, 250, 30));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -72,25 +87,24 @@ public class CadastroMidia extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
+            .addComponent(backmidia, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addComponent(backmidia, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 180));
 
         Fnome.setBackground(new java.awt.Color(250, 250, 250));
         Fnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Fnome.setEnabled(false);
         jPanel1.add(Fnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 560, 40));
 
         jComboBox1.setBackground(new java.awt.Color(250, 250, 250));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "10", "12", "14", "16", "18" }));
         jComboBox1.setToolTipText("");
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 110, 40));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, 110, 40));
 
         jLabel1.setText("Nome*:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
@@ -105,7 +119,6 @@ public class CadastroMidia extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         Fdata.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Fdata.setEnabled(false);
         Fdata.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(Fdata, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 220, 260, 40));
 
@@ -118,18 +131,17 @@ public class CadastroMidia extends javax.swing.JPanel {
         Fnao.setText("Não");
         Fnao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Fnao.setFocusable(false);
-        jPanel1.add(Fnao, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 360, 60, 30));
+        jPanel1.add(Fnao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 560, 60, 30));
 
         Fsobre.setBackground(new java.awt.Color(250, 250, 250));
         Fsobre.setColumns(20);
         Fsobre.setRows(5);
-        Fsobre.setEnabled(false);
         jScrollPane2.setViewportView(Fsobre);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 560, 320));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 560, 320));
 
         jLabel4.setText("Descrição:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         jSlider1.setBackground(new java.awt.Color(250, 250, 250));
         jSlider1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -141,10 +153,11 @@ public class CadastroMidia extends javax.swing.JPanel {
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
         jSlider1.setToolTipText("");
-        jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 520, 50));
+        jSlider1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, 330, 60));
 
         jLabel5.setText("Avaliação*:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 660, -1, -1));
 
         Fsim.setBackground(new java.awt.Color(250, 250, 250));
         Assistido.add(Fsim);
@@ -152,10 +165,10 @@ public class CadastroMidia extends javax.swing.JPanel {
         Fsim.setText("Sim");
         Fsim.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Fsim.setFocusable(false);
-        jPanel1.add(Fsim, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 60, 30));
+        jPanel1.add(Fsim, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, 60, 30));
 
         jLabel6.setText("Assistido*:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 340, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 530, -1, -1));
 
         jComboBox2.setBackground(new java.awt.Color(250, 250, 250));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -164,8 +177,29 @@ public class CadastroMidia extends javax.swing.JPanel {
         jComboBox2.setToolTipText("");
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 210, 40));
 
-        jLabel8.setText("Classificação:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, -1, -1));
+        jLabel8.setText("Classificação*:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, -1, -1));
+
+        Fnome1.setBackground(new java.awt.Color(250, 250, 250));
+        Fnome1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(Fnome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 530, 40));
+
+        jLabel7.setText("Gênero:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, -1, -1));
+
+        Fnome2.setBackground(new java.awt.Color(250, 250, 250));
+        Fnome2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(Fnome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 520, 40));
+
+        jLabel9.setText("URL para foto:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+        Fnome3.setBackground(new java.awt.Color(250, 250, 250));
+        Fnome3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(Fnome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 560, 40));
+
+        jLabel10.setText("Plataforma:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
@@ -180,18 +214,25 @@ public class CadastroMidia extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField Fdata;
     private javax.swing.JRadioButton Fnao;
     private javax.swing.JTextField Fnome;
+    private javax.swing.JTextField Fnome1;
+    private javax.swing.JTextField Fnome2;
+    private javax.swing.JTextField Fnome3;
     private javax.swing.JRadioButton Fsim;
     private javax.swing.JTextArea Fsobre;
+    private javax.swing.JLabel backmidia;
     private javax.swing.JButton btn_cadastroMidia;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
