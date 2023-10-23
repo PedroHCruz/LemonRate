@@ -22,9 +22,15 @@ public class UsuarioControl {
         if (nome.isEmpty() || nome.length() < 3 || nome.equalsIgnoreCase("seunome")) {
             JOptionPane.showMessageDialog(null, "O nome deve conter no mínimo 3 letras!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
+
         }
         if (email.isEmpty() || !email.contains("@") || !email.contains(".com") || email.equalsIgnoreCase("seuemail@gmail.com")) {
             JOptionPane.showMessageDialog(null, "Insira um email válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        }
+        if(!this.dao.verificaEmail(email)){
+            JOptionPane.showMessageDialog(null, "Email já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (senha.isEmpty() || senha.length() < 8 || senha.equalsIgnoreCase("suasenha")

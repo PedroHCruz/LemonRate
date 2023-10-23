@@ -37,7 +37,7 @@ public class UsuarioDAO {
             System.err.println("Erro ao cadastrar!");
             return false;
         }
-    }
+        }
 
     public boolean logaUsuario(String email, String senha) {
         String sql = "SELECT email,senha FROM lemonrate.usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
@@ -54,8 +54,8 @@ public class UsuarioDAO {
             System.err.println("Erro ao logar");
             return false;
         }
+        }
 
-    }
 
     public Usuario getUsuario(String email, String senha) {
         String sql = "SELECT * FROM lemonrate.usuario WHERE email = '" + email + "' AND senha = '" + senha + "';";
@@ -65,25 +65,24 @@ public class UsuarioDAO {
             if (resultadoBD.next()) {
                 String nome = resultadoBD.getString("nome");
                 int id = resultadoBD.getInt("id");
-                char gen = 'N';
                 String desc = resultadoBD.getString("sobremim");
                 String genero = "";
                 genero = resultadoBD.getString("genero");
-                gen = genero.charAt(0);
+                char gen = genero.charAt(0);
                 Date data = resultadoBD.getDate("datanascimento");
                 Usuario usuarioSelecionado = new Usuario(nome, email, senha);
                 usuarioSelecionado.setId(id);
                 usuarioSelecionado.setDescricao(desc);
                 usuarioSelecionado.setNascimento(data);
                 usuarioSelecionado.setGenero(gen);
-                System.out.println("deu");
+                
                 return usuarioSelecionado;
             } else {
-                System.out.println("nao deu");
+                
                 return null;
             }
         } catch (SQLException ex) {
-            System.out.println("nao deu msm");
+            
             return null;
         }
     }
@@ -99,6 +98,20 @@ public class UsuarioDAO {
             trans.setDate(5, dataSql);
             trans.executeUpdate();
             return true;
+        } catch (SQLException ex){
+            return false;
+        }
+    }
+    
+    public boolean verificaEmail(String email){
+        String sql = "SELECT * FROM lemonrate.usuario WHERE email = '" + email + "';";
+        try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)) {
+            ResultSet resultadoBD = trans.executeQuery();
+            if(resultadoBD.next()) {
+                return false;
+            } else {
+                return true;
+            }
         } catch (SQLException ex){
             return false;
         }

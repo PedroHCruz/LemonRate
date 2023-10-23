@@ -323,6 +323,7 @@ public class Cadastro extends javax.swing.JPanel {
         String nome = nomeF.getText();
         String email = emailF.getText();
         String senha = String.valueOf(senhaF.getPassword());
+        
 
         boolean ok = this.usuarioControl.cadastraUsuario(nome, email, senha);
 
