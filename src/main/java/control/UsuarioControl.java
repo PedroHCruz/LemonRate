@@ -29,7 +29,7 @@ public class UsuarioControl {
             return false;
 
         }
-        if(!this.dao.verificaEmail(email)){
+        if (!this.dao.verificaEmail(email)) {
             JOptionPane.showMessageDialog(null, "Email já cadastrado!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -42,7 +42,7 @@ public class UsuarioControl {
             JOptionPane.showMessageDialog(null, "Sua senha deve conter 8 caracteres, incluindo letra maiúscula e minúscula, número, e um caracter especial!", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        nome = nome.substring(0,1).toUpperCase().concat(nome.substring(1));
+        nome = nome.substring(0, 1).toUpperCase().concat(nome.substring(1));
         Usuario novoUsuario = new Usuario(nome, email, senha);
         return this.dao.cadastraUsuario(novoUsuario);
     }
@@ -68,10 +68,9 @@ public class UsuarioControl {
         return this.dao.getUsuario(email, senha);
     }
 
-    public boolean uptadeUsuario(String nome, String email, int id, char genero, String descricao, Date data){
-        if(!nome.equals("") && !email.equals("")){
-            System.out.println("teste1");
-        return this.dao.updateUsuario(id, nome, data, genero, email, descricao);
+    public boolean uptadeUsuario(String nome, String email, int id, char genero, String descricao, Date data, String url) {
+        if (!nome.equals("") && !email.equals("") && data != null) {
+            return this.dao.updateUsuario(id, nome, data, genero, email, descricao, url);
         } else {
             return false;
         }

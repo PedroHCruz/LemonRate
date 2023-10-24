@@ -67,6 +67,7 @@ public class UsuarioDAO {
                 int id = resultadoBD.getInt("id");
                 String desc = resultadoBD.getString("sobremim");
                 String genero = "";
+                String url = resultadoBD.getString("urlfoto");
                 genero = resultadoBD.getString("genero");
                 char gen = genero.charAt(0);
                 Date data = resultadoBD.getDate("datanascimento");
@@ -75,6 +76,7 @@ public class UsuarioDAO {
                 usuarioSelecionado.setDescricao(desc);
                 usuarioSelecionado.setNascimento(data);
                 usuarioSelecionado.setGenero(gen);
+                usuarioSelecionado.setUrlFoto(url);
                 
                 return usuarioSelecionado;
             } else {
@@ -86,9 +88,15 @@ public class UsuarioDAO {
             return null;
         }
     }
-    public boolean updateUsuario(int id, String nome, Date data, char genero, String email, String descricao){
+    public boolean updateUsuario(int id, String nome, Date data, char genero, String email, String descricao, String url){
         java.sql.Date dataSql = new java.sql.Date(data.getTime());
-        String sql = "UPDATE lemonrate.usuario SET nome = ?, email = ?, genero = ?, sobremim = ?, datanascimento = ?"
+        String sql = "UPDATE lemonrate.usuario SET "
+                + "nome = ?, "
+                + "email = ?, "
+                + "genero = ?, "
+                + "sobremim = ?,"
+                + "datanascimento = ?,"
+                + "urlfoto = ?"
                 + "WHERE id = " + id;
         try ( PreparedStatement trans = this.conexaoBanco.prepareStatement(sql)){
             trans.setString(1, nome);
@@ -96,6 +104,7 @@ public class UsuarioDAO {
             trans.setString(3, String.valueOf(genero));
             trans.setString(4, descricao);
             trans.setDate(5, dataSql);
+            trans.setString(6, url);
             trans.executeUpdate();
             return true;
         } catch (SQLException ex){

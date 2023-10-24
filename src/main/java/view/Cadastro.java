@@ -323,12 +323,16 @@ public class Cadastro extends javax.swing.JPanel {
         String nome = nomeF.getText();
         String email = emailF.getText();
         String senha = String.valueOf(senhaF.getPassword());
-        
+        String senharepetida = String.valueOf(senhaF1.getPassword());
 
+        if(senha.equals(senharepetida)){
         boolean ok = this.usuarioControl.cadastraUsuario(nome, email, senha);
 
         if (ok == true) {
             JOptionPane.showMessageDialog(this, "Usuario cadastrado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "As senhas devem ser iguais!", "Sucesso", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_cadastrarBTNActionPerformed

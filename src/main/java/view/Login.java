@@ -242,7 +242,7 @@ public class Login extends javax.swing.JPanel {
             frameParent.dispose();
 
         } else {
-
+            JOptionPane.showMessageDialog(this, "Email ou senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_entrarBTNActionPerformed
 

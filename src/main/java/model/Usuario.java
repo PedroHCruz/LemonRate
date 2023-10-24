@@ -19,6 +19,7 @@ public class Usuario {
     private char genero;
     private Date nascimento;
     private String descricao;
+    private String urlFoto;
 
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
@@ -27,6 +28,7 @@ public class Usuario {
         this.genero = 'N';
         this.nascimento = null;
         this.descricao = "";
+        this.urlFoto = "vazio";
     }
 
     public int getId() {
@@ -71,6 +73,14 @@ public class Usuario {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     
