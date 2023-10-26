@@ -35,11 +35,21 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void config(Usuario userSelecionado) {
+        /*FrameApp_home.trocaPanel("Perfil", new Perfil(userselecionado));
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        FrameApp_home.desabilitaScroll();*/
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
-        ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
-        lbl_logo.setIcon(imgLogo);
-        nomeTxt.setText(primeiroNome);
+        ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
+        ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHome.png");
+        ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
+        imgLogolimao.setImage(imgLogolimao.getImage().getScaledInstance(80, 80, 100));
+        logoCentral.setIcon(imgLogocentro);
+        logoCentral.setText("");
+        background.setIcon(imgbackground);
+        background.setText("");
+        logoMini.setIcon(imgLogolimao);
+        logoMini.setText("");
     }
 
     /*
@@ -71,13 +81,13 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lbl_logo = new javax.swing.JLabel();
-        nomeTxt = new javax.swing.JLabel();
-        menuTxt = new javax.swing.JLabel();
-        deslogarTxt = new javax.swing.JLabel();
-        olaTxt = new javax.swing.JLabel();
+        logoCentral = new javax.swing.JLabel();
+        logoMini = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        background = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1270, 3000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,82 +96,89 @@ public class Menu extends javax.swing.JPanel {
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1250, 3000));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(32, 32, 32));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1250, 82));
 
-        lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 6, 300, 167));
+        logoCentral.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoCentral.setText("logo");
+        logoCentral.setPreferredSize(new java.awt.Dimension(600, 70));
 
-        nomeTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        nomeTxt.setForeground(new java.awt.Color(255, 255, 255));
-        nomeTxt.setText("<Nome do Usuário>");
-        jPanel2.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+        logoMini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoMini.setText("logo");
 
-        menuTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        menuTxt.setForeground(new java.awt.Color(255, 255, 255));
-        menuTxt.setText("Meu Perfil");
-        menuTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuTxtMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                menuTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                menuTxtMouseExited(evt);
-            }
-        });
-        jPanel2.add(menuTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 70, -1, -1));
-
-        deslogarTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        deslogarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        deslogarTxt.setText("Sair");
-        deslogarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deslogarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deslogarTxtMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                deslogarTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                deslogarTxtMouseExited(evt);
-            }
-        });
-        jPanel2.add(deslogarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-
-        olaTxt.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        olaTxt.setForeground(new java.awt.Color(255, 255, 255));
-        olaTxt.setText("Olá,");
-        jPanel2.add(olaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 619, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(logoMini, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(245, 245, 245)
+                .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(325, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(logoMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPanel5.setBackground(new java.awt.Color(32, 32, 32));
+
+        background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.setText("backgroud image");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 612, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(2, 191, 99));
+        jPanel4.setToolTipText("");
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("VEJA TAMBÉM A BIBLIOTECA DE OUTROS USUÁRIOS");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1220, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,65 +186,38 @@ public class Menu extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2259, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2212, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseEntered
-        this.menuTxt.setForeground(new Color(153, 153, 153));
-    }//GEN-LAST:event_menuTxtMouseEntered
-
-    private void menuTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseExited
-        this.menuTxt.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_menuTxtMouseExited
-
-    private void deslogarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseEntered
-        this.deslogarTxt.setForeground(Color.red);
-    }//GEN-LAST:event_deslogarTxtMouseEntered
-
-    private void deslogarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseExited
-        this.deslogarTxt.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_deslogarTxtMouseExited
-
-    private void deslogarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslogarTxtMouseClicked
-        fecharJanela();
-        FrameApp_Login janelaLogin = new FrameApp_Login();
-        janelaLogin.setVisible(true);
-    }//GEN-LAST:event_deslogarTxtMouseClicked
-
-    private void menuTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTxtMouseClicked
-
-        FrameApp_home.trocaPanel("Perfil", new Perfil(userselecionado));
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        FrameApp_home.desabilitaScroll();
-    }//GEN-LAST:event_menuTxtMouseClicked
 
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         parentFrame.dispose();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel deslogarTxt;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lbl_logo;
-    private javax.swing.JLabel menuTxt;
-    private javax.swing.JLabel nomeTxt;
-    private javax.swing.JLabel olaTxt;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel logoCentral;
+    private javax.swing.JLabel logoMini;
     // End of variables declaration//GEN-END:variables
 }
