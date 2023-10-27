@@ -21,9 +21,8 @@ import model.Usuario;
  */
 public class Menu extends javax.swing.JPanel {
 
-    
     Usuario userselecionado;
-    
+
     public Menu() {
         initComponents();
     }
@@ -35,14 +34,17 @@ public class Menu extends javax.swing.JPanel {
     }
 
     public void config(Usuario userSelecionado) {
-        /*FrameApp_home.trocaPanel("Perfil", new Perfil(userselecionado));
-        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        FrameApp_home.desabilitaScroll();*/
+
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
         ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHome.png");
         ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
+        ImageIcon imgPerfil = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\perfil.png");
+        ImageIcon imgSerie = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\serie.png");
+        ImageIcon imgLivro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\livro.png");
+        ImageIcon imgFilme = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\filme.png");
+
         imgLogolimao.setImage(imgLogolimao.getImage().getScaledInstance(80, 80, 100));
         logoCentral.setIcon(imgLogocentro);
         logoCentral.setText("");
@@ -50,6 +52,14 @@ public class Menu extends javax.swing.JPanel {
         background.setText("");
         logoMini.setIcon(imgLogolimao);
         logoMini.setText("");
+        perfil.setIcon(imgPerfil);
+        perfil.setText("");
+        serie.setIcon(imgSerie);
+        serie.setText("");
+        livro.setIcon(imgLivro);
+        livro.setText("");
+        filme.setIcon(imgFilme);
+        filme.setText("");
     }
 
     /*
@@ -83,11 +93,20 @@ public class Menu extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         logoCentral = new javax.swing.JLabel();
         logoMini = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        perfil = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        serie = new javax.swing.JLabel();
+        livro = new javax.swing.JLabel();
+        filme = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1270, 3000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,25 +125,56 @@ public class Menu extends javax.swing.JPanel {
         logoMini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoMini.setText("logo");
 
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Amigos");
+
+        perfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        perfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        perfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                perfilMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Biblioteca");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(logoMini, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(245, 245, 245)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(logoMini, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(114, 114, 114)))
                 .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(101, 101, 101)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoMini)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(logoMini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(32, 32, 32));
@@ -163,6 +213,44 @@ public class Menu extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
+        jButton1.setBackground(new java.awt.Color(2, 191, 99));
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(2, 191, 99));
+        jButton1.setText("Ver Séries");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 191, 99), 1, true));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jButton2.setBackground(new java.awt.Color(2, 191, 99));
+        jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(2, 191, 99));
+        jButton2.setText("Ver Livros");
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 191, 99), 1, true));
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(2, 191, 99));
+        jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(2, 191, 99));
+        jButton3.setText("Ver Filmes");
+        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 191, 99), 1, true));
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        serie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        serie.setText("Serie");
+
+        livro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        livro.setText("Livro");
+
+        filme.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        filme.setText("Filme");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -171,6 +259,22 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(serie, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(269, 269, 269)
+                .addComponent(livro, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(filme, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(188, 188, 188))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +282,17 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serie, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(livro, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filme, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -196,14 +310,24 @@ public class Menu extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2212, Short.MAX_VALUE))
+                .addGap(0, 2213, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_perfilMouseClicked
+        FrameApp_home.trocaPanel("Perfil", new Perfil(userselecionado));
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        FrameApp_home.desabilitaScroll();
+    }//GEN-LAST:event_perfilMouseClicked
 
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -211,13 +335,22 @@ public class Menu extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel filme;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel livro;
     private javax.swing.JLabel logoCentral;
     private javax.swing.JLabel logoMini;
+    private javax.swing.JLabel perfil;
+    private javax.swing.JLabel serie;
     // End of variables declaration//GEN-END:variables
 }
