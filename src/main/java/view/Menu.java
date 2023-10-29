@@ -220,6 +220,11 @@ public class Menu extends javax.swing.JPanel {
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(2, 191, 99), 1, true));
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(2, 191, 99));
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -328,6 +333,12 @@ public class Menu extends javax.swing.JPanel {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         FrameApp_home.desabilitaScroll();
     }//GEN-LAST:event_perfilMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrameApp_home.trocaPanel("Pesquisa", new Pesquisa(userselecionado));
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        FrameApp_home.desabilitaScroll();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
