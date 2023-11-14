@@ -123,6 +123,7 @@ public class Perfil extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         fotoPerfil = new javax.swing.JLabel();
         fundo = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         nomeTxt = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         midiaTxt = new javax.swing.JLabel();
@@ -163,15 +164,31 @@ public class Perfil extends javax.swing.JPanel {
 
         fundo.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Voltar");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
         fundo.setLayout(fundoLayout);
         fundoLayout.setHorizontalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(fundoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3)
+                .addContainerGap(1188, Short.MAX_VALUE))
         );
         fundoLayout.setVerticalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 175, Short.MAX_VALUE)
+            .addGroup(fundoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         jPanel3.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));
@@ -411,6 +428,12 @@ public class Perfil extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_verDetalhesActionPerformed
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        FrameApp_home.trocaPanel("home", new Menu());
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        FrameApp_home.habilitaScroll();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     public String converteDataString(Date data) {
         DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         String dataFormatada = dateformat.format(data);
@@ -434,6 +457,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JPanel fundo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
