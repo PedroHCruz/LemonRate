@@ -73,7 +73,7 @@ public class Perfil extends javax.swing.JPanel {
                 Foutro.setSelected(true);
                 break;
         }
-        if (userSelecionado.getUrlFoto() == null) {
+        if (userSelecionado.getUrlFoto() == null || userSelecionado.getUrlFoto().equalsIgnoreCase("")) {
             this.fotoPerfil.setText("");
             this.fotoPerfil.setIcon(fotoVazia);
         } else {

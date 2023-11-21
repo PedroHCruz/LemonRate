@@ -18,8 +18,8 @@ public class FactoryPostgres {
 
     private static Connection conexaoBD;
     private static String URL = "";
-    private static String USER = "aula";
-    private static String PASS = "aula";
+    private static String USER = "pedro_cruz";
+    private static String PASS = "pedro_cruz";
 
     public static void getIP() {
         InetAddress addr;
@@ -30,9 +30,9 @@ public class FactoryPostgres {
         }
         String ip = addr.getHostAddress();
         if (ip.contains("10.90")) {
-            URL = "jdbc:postgresql://10.90.24.56:5432/aula";
+            URL = "jdbc:postgresql://10.90.24.56:5432/pedro_cruz";
         } else {
-            URL = "jdbc:postgresql://200.18.128.56:5432/aula";
+            URL = "jdbc:postgresql://200.18.128.56:5432/pedro_cruz";
         }
     }
 
