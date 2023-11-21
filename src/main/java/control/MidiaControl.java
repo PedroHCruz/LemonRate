@@ -4,6 +4,7 @@
  */
 package control;
 
+import dao.MidiaDAO;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  */
 public class MidiaControl {
 
-    private MidiaControl dao;
+    private MidiaDAO dao;
 
     public MidiaControl() {
-        this.dao = new MidiaControl();
+        this.dao = new MidiaDAO();
     }
     
     public ArrayList<String> ListaCategorias(){

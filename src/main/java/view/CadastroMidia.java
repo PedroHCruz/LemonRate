@@ -6,6 +6,7 @@ package view;
 
 import control.MidiaControl;
 import control.UsuarioControl;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,11 @@ public class CadastroMidia extends javax.swing.JPanel {
     public void config(){
         
         boolean ok = ListaCategorias();
+        if(ok){
+            System.out.println("deu certo");
+        } else {
+            System.err.println("deu erro");
+        }
         
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\backmidia.png");
         this.backmidia.setIcon(imgLogo);
@@ -33,7 +39,11 @@ public class CadastroMidia extends javax.swing.JPanel {
 
     
     public boolean ListaCategorias(){
-        this.comboGenero.addItem(midiaControl.ListaCategorias().toString());
+        ArrayList<String> Categorias = new ArrayList<>();
+        Categorias = midiaControl.ListaCategorias();
+        for(int i = 0; i <Categorias.size(); i++){
+            this.comboGenero.addItem(Categorias.get(i));
+        }
         return true;
     }
     /**
@@ -47,7 +57,7 @@ public class CadastroMidia extends javax.swing.JPanel {
 
         Assistido = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        btn_cadastroMidia = new javax.swing.JButton();
+        btn_voltar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         backmidia = new javax.swing.JLabel();
         Fnome = new javax.swing.JTextField();
@@ -75,18 +85,18 @@ public class CadastroMidia extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_cadastroMidia.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        btn_cadastroMidia.setText("Voltar");
-        btn_cadastroMidia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btn_cadastroMidia.setContentAreaFilled(false);
-        btn_cadastroMidia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_cadastroMidia.setFocusable(false);
-        btn_cadastroMidia.addActionListener(new java.awt.event.ActionListener() {
+        btn_voltar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btn_voltar.setText("Voltar");
+        btn_voltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn_voltar.setContentAreaFilled(false);
+        btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_voltar.setFocusable(false);
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastroMidiaActionPerformed(evt);
+                btn_voltarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 700, 250, 30));
+        jPanel1.add(btn_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 700, 250, 30));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -151,7 +161,6 @@ public class CadastroMidia extends javax.swing.JPanel {
         avaliarSlider.setPaintTicks(true);
         avaliarSlider.setSnapToTicks(true);
         avaliarSlider.setToolTipText("");
-        avaliarSlider.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(avaliarSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 670, 560, 60));
 
         avaliacaoTxt.setText("Avaliação*:");
@@ -199,12 +208,14 @@ public class CadastroMidia extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_cadastroMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidiaActionPerformed
+    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         FrameApp_home.trocaPanel("Perfil", new Perfil());
-    }//GEN-LAST:event_btn_cadastroMidiaActionPerformed
+    }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_cadastroMidia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidia1ActionPerformed
-        FrameApp_home.trocaPanel("Perfil", new Perfil());
+        String nome = this.Fnome.getText();
+        String plataforma = this.Fplataforma.getText();
+        String genero = this.comboGenero.getSelectedItem().toString();
     }//GEN-LAST:event_btn_cadastroMidia1ActionPerformed
 
 
@@ -217,8 +228,8 @@ public class CadastroMidia extends javax.swing.JPanel {
     private javax.swing.JLabel avaliacaoTxt;
     private javax.swing.JSlider avaliarSlider;
     private javax.swing.JLabel backmidia;
-    private javax.swing.JButton btn_cadastroMidia;
     private javax.swing.JButton btn_cadastroMidia1;
+    private javax.swing.JButton btn_voltar;
     private javax.swing.JLabel classificacaoTxt;
     private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboTipo;
