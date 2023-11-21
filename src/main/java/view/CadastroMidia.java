@@ -4,7 +4,10 @@
  */
 package view;
 
+import control.MidiaControl;
+import control.UsuarioControl;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,19 +15,27 @@ import javax.swing.ImageIcon;
  */
 public class CadastroMidia extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CadastroMidia
-     */
+    private static MidiaControl midiaControl;
+    
     public CadastroMidia() {
+        midiaControl = new MidiaControl();
         initComponents();
         config();
     }
     
     public void config(){
+        
+        boolean ok = ListaCategorias();
+        
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\backmidia.png");
         this.backmidia.setIcon(imgLogo);
     }
 
+    
+    public boolean ListaCategorias(){
+        this.comboGenero.addItem(midiaControl.ListaCategorias().toString());
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +51,7 @@ public class CadastroMidia extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         backmidia = new javax.swing.JLabel();
         Fnome = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboGenero = new javax.swing.JComboBox<>();
         nomeTxt = new javax.swing.JLabel();
         tipoTxt = new javax.swing.JLabel();
         Fdata = new javax.swing.JFormattedTextField();
@@ -96,10 +107,10 @@ public class CadastroMidia extends javax.swing.JPanel {
         Fnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(Fnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 560, 40));
 
-        jComboBox1.setBackground(new java.awt.Color(250, 250, 250));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setToolTipText("");
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 530, 40));
+        comboGenero.setBackground(new java.awt.Color(250, 250, 250));
+        comboGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        comboGenero.setToolTipText("");
+        jPanel1.add(comboGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 530, 40));
 
         nomeTxt.setText("Nome*:");
         jPanel1.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
@@ -209,11 +220,11 @@ public class CadastroMidia extends javax.swing.JPanel {
     private javax.swing.JButton btn_cadastroMidia;
     private javax.swing.JButton btn_cadastroMidia1;
     private javax.swing.JLabel classificacaoTxt;
+    private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel dataTxt;
     private javax.swing.JLabel descricaoTxt;
     private javax.swing.JLabel generoTxt;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
