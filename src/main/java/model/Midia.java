@@ -6,29 +6,32 @@ package model;
 
 import java.util.Date;
 
-/**
- *
- * @author l a w t
- */
+
 public class Midia {
+    
     private String nome;
-    private String tipo;
-    private int código;
-    private String criador;
-    private Date upload;
-    private Date dataLancamento;
     private String descricao;
+    private String genero;
+    private String plataforma;
+    private String criador;
+    private Date dataLancamento;
+    private Date dataUpload;
+    private int tipo_midia;
+    private int classificacao;
     private int avaliacao;
     private int id_usuario;
 
-    public Midia(String nome, String tipo, String criador, Date upload, Date dataLancamento, String descricao, int avaliacao, int id_usuario) {
+    public Midia(String nome, String descricao, String genero, String plataforma, String criador, Date dataLancamento, int tipo_midia, int classificacao, int avaliacao, int id_usuario) {
         this.nome = nome;
-        this.tipo = tipo;
-        this.criador = criador;
-        this.upload = upload;
-        this.dataLancamento = dataLancamento;
         this.descricao = descricao;
+        this.genero = genero;
+        this.plataforma = plataforma;
+        this.criador = criador;
+        this.dataLancamento = dataLancamento;
+        this.tipo_midia = tipo_midia;
+        this.classificacao = classificacao;
         this.avaliacao = avaliacao;
+        this.dataUpload = new Date();
         this.id_usuario = id_usuario;
     }
 
@@ -40,20 +43,28 @@ public class Midia {
         this.nome = nome;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public int getCódigo() {
-        return código;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setCódigo(int código) {
-        this.código = código;
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getPlataforma() {
+        return plataforma;
+    }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
     }
 
     public String getCriador() {
@@ -64,14 +75,6 @@ public class Midia {
         this.criador = criador;
     }
 
-    public Date getUpload() {
-        return upload;
-    }
-
-    public void setUpload(Date upload) {
-        this.upload = upload;
-    }
-
     public Date getDataLancamento() {
         return dataLancamento;
     }
@@ -80,12 +83,28 @@ public class Midia {
         this.dataLancamento = dataLancamento;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Date getDataUpload() {
+        return dataUpload;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDataUpload(Date dataUpload) {
+        this.dataUpload = dataUpload;
+    }
+
+    public int getTipo_midia() {
+        return tipo_midia;
+    }
+
+    public void setTipo_midia(int tipo_midia) {
+        this.tipo_midia = tipo_midia;
+    }
+
+    public int getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(int classificacao) {
+        this.classificacao = classificacao;
     }
 
     public int getAvaliacao() {
@@ -103,5 +122,13 @@ public class Midia {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    
+    @Override
+    public String toString() {
+        return "Midia{" + "nome=" + nome + ", descricao=" + descricao + ", genero=" + genero + ", plataforma=" + plataforma + ", criador=" + criador + ", dataLancamento=" + dataLancamento + ", dataUpload=" + dataUpload + ", tipo_midia=" + tipo_midia + ", classificacao=" + classificacao + ", avaliacao=" + avaliacao + '}';
+    }
+    
+    
     
 }

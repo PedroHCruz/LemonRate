@@ -347,7 +347,7 @@ public class Perfil extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastroMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidiaActionPerformed
-        FrameApp_home.trocaPanel("CadastroMidia", new CadastroMidia());
+        FrameApp_home.trocaPanel("CadastroMidia", new CadastroMidia(userSelecionado));
     }//GEN-LAST:event_btn_cadastroMidiaActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
