@@ -23,6 +23,7 @@ public class CadastroMidia extends javax.swing.JPanel {
 
     private static MidiaControl midiaControl;
     Usuario userSelecionado;
+    private ArrayList<String> generosSelecionados = new ArrayList<>();
     
     public CadastroMidia() {
         midiaControl = new MidiaControl();
@@ -40,26 +41,18 @@ public class CadastroMidia extends javax.swing.JPanel {
     
     public void config(){
         
-        boolean ok = ListaCategorias();
-        if(ok){
-            System.out.println("deu certo");
-        } else {
-            System.err.println("deu erro");
-        }
+        //boolean ok = ListaCategorias();
+        //if(ok){
+          //  System.out.println("deu certo");
+        //} else {
+          //  System.err.println("deu erro");
+        //}
         
         ImageIcon imgLogo = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\backmidia.png");
         this.backmidia.setIcon(imgLogo);
     }
 
     
-    public boolean ListaCategorias(){
-        ArrayList<String> Categorias = new ArrayList<>();
-        Categorias = midiaControl.ListaCategorias();
-        for(int i = 0; i <Categorias.size(); i++){
-            this.comboGenero.addItem(Categorias.get(i));
-        }
-        return true;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +68,6 @@ public class CadastroMidia extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         backmidia = new javax.swing.JLabel();
         Fnome = new javax.swing.JTextField();
-        comboGenero = new javax.swing.JComboBox<>();
         nomeTxt = new javax.swing.JLabel();
         tipoTxt = new javax.swing.JLabel();
         Fdata = new javax.swing.JFormattedTextField();
@@ -94,6 +86,8 @@ public class CadastroMidia extends javax.swing.JPanel {
         comboClassificacao = new javax.swing.JComboBox<>();
         Fcriador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btnGeneros = new javax.swing.JButton();
+        Fgenero = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -132,11 +126,6 @@ public class CadastroMidia extends javax.swing.JPanel {
         Fnome.setBackground(new java.awt.Color(250, 250, 250));
         Fnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(Fnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 560, 40));
-
-        comboGenero.setBackground(new java.awt.Color(250, 250, 250));
-        comboGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        comboGenero.setToolTipText("");
-        jPanel1.add(comboGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 530, 40));
 
         nomeTxt.setText("Nome*:");
         jPanel1.add(nomeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
@@ -228,6 +217,23 @@ public class CadastroMidia extends javax.swing.JPanel {
         jLabel1.setText("Criador:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
 
+        btnGeneros.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btnGeneros.setText("Generos:");
+        btnGeneros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnGeneros.setContentAreaFilled(false);
+        btnGeneros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGeneros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 410, 120, 40));
+
+        Fgenero.setBackground(new java.awt.Color(250, 250, 250));
+        Fgenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Fgenero.setEnabled(false);
+        jPanel1.add(Fgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 400, 40));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,7 +244,7 @@ public class CadastroMidia extends javax.swing.JPanel {
     private void btn_cadastroMidia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidia1ActionPerformed
         String nome = this.Fnome.getText();
         String plataforma = this.Fplataforma.getText();
-        String genero = this.comboGenero.getSelectedItem().toString();
+        //String genero = this.comboGenero.getSelectedItem().toString();
         String descricao = this.Fsobre.getText();
         String data = Fdata.getText();
         String criador = Fcriador.getText();
@@ -259,6 +265,11 @@ public class CadastroMidia extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_cadastroMidia1ActionPerformed
 
+    private void btnGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerosActionPerformed
+        FrameApp_lista janela = new FrameApp_lista(generosSelecionados);
+        janela.setVisible(true);
+    }//GEN-LAST:event_btnGenerosActionPerformed
+
     
     private Date ConverteData(String data){
         try{
@@ -275,17 +286,18 @@ public class CadastroMidia extends javax.swing.JPanel {
     private javax.swing.ButtonGroup Assistido;
     private javax.swing.JTextField Fcriador;
     private javax.swing.JFormattedTextField Fdata;
+    private javax.swing.JTextField Fgenero;
     private javax.swing.JTextField Fnome;
     private javax.swing.JTextField Fplataforma;
     private javax.swing.JTextArea Fsobre;
     private javax.swing.JLabel avaliacaoTxt;
     private javax.swing.JSlider avaliarSlider;
     private javax.swing.JLabel backmidia;
+    private javax.swing.JButton btnGeneros;
     private javax.swing.JButton btn_cadastroMidia1;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JLabel classificacaoTxt;
     private javax.swing.JComboBox<String> comboClassificacao;
-    private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel dataTxt;
     private javax.swing.JLabel descricaoTxt;
