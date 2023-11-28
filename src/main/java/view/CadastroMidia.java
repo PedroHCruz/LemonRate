@@ -91,7 +91,6 @@ public class CadastroMidia extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnGeneros = new javax.swing.JButton();
         Fgenero = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -235,21 +234,13 @@ public class CadastroMidia extends javax.swing.JPanel {
 
         Fgenero.setBackground(new java.awt.Color(250, 250, 250));
         Fgenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Fgenero.setEnabled(false);
         Fgenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FgeneroActionPerformed(evt);
             }
         });
         jPanel1.add(Fgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 400, 40));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 420, -1, -1));
+        Fgenero.setEditable(false);
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
@@ -270,6 +261,7 @@ public class CadastroMidia extends javax.swing.JPanel {
         int classificacao = comboClassificacao.getSelectedIndex() + 1;
         int avaliacao = avaliarSlider.getValue();
         int id_usuario = userSelecionado.getId();
+        
         if(dataLancamento == null){
             dataLancamento = new Date();
             dataLancamento.setTime(900000000);
@@ -277,6 +269,10 @@ public class CadastroMidia extends javax.swing.JPanel {
         boolean ok = midiaControl.CadastraMidia(nome, descricao, plataforma,
                 criador, dataLancamento, tipo_midia, classificacao, avaliacao,
                 id_usuario);
+        
+        int id_midia = midiaControl.IdMidia(nome);
+        
+        InsercaoMidiaCategoria(id_midia);
         
         if(ok){
             System.out.println("certo");
@@ -287,19 +283,17 @@ public class CadastroMidia extends javax.swing.JPanel {
 
     private void btnGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerosActionPerformed
 
-        FrameApp_lista janela = new FrameApp_lista((Frame) SwingUtilities.getWindowAncestor(this), generosSelecionados);
+        FrameApp_lista janela = new FrameApp_lista(this, generosSelecionados);
         janela.setVisible(true);
+        generosSelecionados.clear();
     }//GEN-LAST:event_btnGenerosActionPerformed
 
     private void FgeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FgeneroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FgeneroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    public void updateFgenero(){
         Fgenero.setText(this.generosSelecionados.toString());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void SetarField(){
         
     }
     
@@ -313,6 +307,29 @@ public class CadastroMidia extends javax.swing.JPanel {
             return null;
         }
     } 
+    
+    private void InsercaoMidiaCategoria(int id_midia){
+        
+        
+        String generos = Fgenero.getText();
+        generos = generos.substring(1, generos.length()-1);
+        String[] G = generos.split(", ");
+        
+        for (int i = 0; i < G.length; i++) {
+            int id = midiaControl.IdGenero(G[i]);
+            InserirCategoriaMidia(id_midia, id);
+        }
+    }
+    
+    private void InserirCategoriaMidia(int id_midia, int id_categoria){
+        boolean ok = midiaControl.CadastraMidiaCategoria(id_midia, id_categoria);
+        
+    }
+    
+    private void getIdMidia(){
+        ArrayList<Integer> IdMidia = new ArrayList<>();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Assistido;
@@ -334,7 +351,6 @@ public class CadastroMidia extends javax.swing.JPanel {
     private javax.swing.JLabel dataTxt;
     private javax.swing.JLabel descricaoTxt;
     private javax.swing.JLabel generoTxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

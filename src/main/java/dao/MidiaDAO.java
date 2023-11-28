@@ -76,4 +76,59 @@ public class MidiaDAO {
             return false;
         }
     }
+    
+        
+    public int IdGenero(String genero) {
+        String sql = "SELECT * FROM lemonrate.categorias C where nome = ?;";
+        int id = 0;
+        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+            trans.setString(1, genero);
+            ResultSet resultadoBD = trans.executeQuery();
+            
+            if(resultadoBD.next()){
+                id = resultadoBD.getInt("id");
+            }
+            
+        } catch (SQLException ex){
+            System.err.println("erro ao dar get no id categoria");
+        }
+        return id;
+    
+    }
+    
+    public int IdMidia(String nome){
+        String sql = "SELECT * FROM lemonrate.midia C where nome = ?;";
+        int id = 0;
+        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+            trans.setString(1, nome);
+            ResultSet resultadoBD = trans.executeQuery();
+            
+            if(resultadoBD.next()){
+                id = resultadoBD.getInt("id");
+            }
+            
+        } catch (SQLException ex){
+            System.err.println("erro ao dar get no id midia");
+        }
+        return id;
+        
+        
+    }
+    
+    public boolean CadastraCategoriaMidia(int id_midia, int id_categoria){
+        String sql = "INSERT INTO lemonrate.midia_categoria (id_midia,id_categoria) VALUES (?,?);";
+        
+        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+            trans.setInt(1, id_midia);
+            trans.setInt(2, id_categoria);
+            
+            trans.executeUpdate();
+            return true;
+            
+        } catch (SQLException ex){
+            System.err.println("Erro ao cadastrar midia_categoria");
+            return false;
+        }
+        
+    }
 }

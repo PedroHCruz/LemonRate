@@ -8,6 +8,7 @@ import control.MidiaControl;
 import java.awt.Frame;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,7 +16,7 @@ import javax.swing.DefaultListModel;
  */
 public class FrameApp_lista extends javax.swing.JDialog {
 
-    private Frame o;
+    private CadastroMidia o;
     private DefaultListModel<String> listaGeneros = new DefaultListModel<>();
     private static MidiaControl midiaControl;
     private ArrayList<String> generosSelecionados = new ArrayList<>();
@@ -26,12 +27,13 @@ public class FrameApp_lista extends javax.swing.JDialog {
         sqlConsulta();
     }
 
-    public FrameApp_lista(Frame owner,ArrayList<String> AGeneros) {
-        super(owner);
+    public FrameApp_lista(CadastroMidia owner,ArrayList<String> AGeneros) {
+        
         this.midiaControl = new MidiaControl();
         initComponents();
         sqlConsulta();
         this.generosSelecionados = AGeneros;
+        o = owner;
     }
 
    
@@ -138,8 +140,10 @@ public class FrameApp_lista extends javax.swing.JDialog {
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         generosSelecionados.addAll(Lgenero.getSelectedValuesList());
-        System.out.println(generosSelecionados);
+
         
+        System.out.println(generosSelecionados);
+        o.updateFgenero();
         this.dispose();
     }//GEN-LAST:event_btnSelectActionPerformed
 

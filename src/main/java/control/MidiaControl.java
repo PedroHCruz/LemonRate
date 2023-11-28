@@ -38,4 +38,17 @@ public class MidiaControl {
         return this.dao.CadastraMidia(nome, descricao, plataforma, criador, dataLancamento, tipo_midia, classificacao, avaliacao, id_usuario);
 
     }
+    
+    public int IdGenero(String genero){
+        return this.dao.IdGenero(genero);
+    }
+    
+    public int IdMidia(String nome){
+        return this.dao.IdMidia(nome);
+    }
+    
+    public boolean CadastraMidiaCategoria(int id_midia, int id_categoria){
+        return this.dao.CadastraCategoriaMidia(id_midia, id_categoria);
+        
+    }
 }
