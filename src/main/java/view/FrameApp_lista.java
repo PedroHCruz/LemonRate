@@ -5,6 +5,7 @@
 package view;
 
 import control.MidiaControl;
+import java.awt.Frame;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -12,9 +13,9 @@ import javax.swing.DefaultListModel;
  *
  * @author 0068961
  */
-public class FrameApp_lista extends javax.swing.JFrame {
+public class FrameApp_lista extends javax.swing.JDialog {
 
-    
+    private Frame o;
     private DefaultListModel<String> listaGeneros = new DefaultListModel<>();
     private static MidiaControl midiaControl;
     private ArrayList<String> generosSelecionados = new ArrayList<>();
@@ -24,13 +25,18 @@ public class FrameApp_lista extends javax.swing.JFrame {
         initComponents();
         sqlConsulta();
     }
-    
-    public FrameApp_lista(ArrayList<String> AGeneros) {
+
+    public FrameApp_lista(Frame owner,ArrayList<String> AGeneros) {
+        super(owner);
         this.midiaControl = new MidiaControl();
         initComponents();
         sqlConsulta();
         this.generosSelecionados = AGeneros;
     }
+
+   
+    
+    
     
 
     
@@ -56,8 +62,12 @@ public class FrameApp_lista extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         btnSelect = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -129,12 +139,17 @@ public class FrameApp_lista extends javax.swing.JFrame {
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         generosSelecionados.addAll(Lgenero.getSelectedValuesList());
         System.out.println(generosSelecionados);
+        
         this.dispose();
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 
     private void preencheArray(ArrayList<String> array){
         array.addAll(Lgenero.getSelectedValuesList());

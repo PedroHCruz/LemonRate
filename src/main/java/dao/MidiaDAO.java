@@ -52,6 +52,7 @@ public class MidiaDAO {
                 + " VALUES (?,?,?,?,?,?,?,?,?,?);";
         
         
+        
         Date dataParaSql = new Date();
         java.sql.Date dataLan = new java.sql.Date(dataLancamento.getTime());
         java.sql.Date data = new java.sql.Date(dataParaSql.getTime());
