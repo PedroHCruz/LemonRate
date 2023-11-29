@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import model.Midia;
 import model.Usuario;
 import tools.FactoryPostgres;
 
@@ -50,24 +51,22 @@ public class MidiaDAO {
                 + "criador,datalancamento,id_tipo,id_classificacao,avaliacao,"
                 + "id_usuario, dataupload)"
                 + " VALUES (?,?,?,?,?,?,?,?,?,?);";
-        
-        
-        
+
         Date dataParaSql = new Date();
         java.sql.Date dataLan = new java.sql.Date(dataLancamento.getTime());
         java.sql.Date data = new java.sql.Date(dataParaSql.getTime());
-        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, nome);
             trans.setString(2, descricao);
             trans.setString(3, plataforma);
             trans.setString(4, criador);
             trans.setDate(5, dataLan);
             trans.setInt(6, tipo_midia);
-            trans.setInt(7,classificacao);
+            trans.setInt(7, classificacao);
             trans.setInt(8, avaliacao);
             trans.setInt(9, id_usuario);
             trans.setDate(10, data);
-            
+
             trans.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -76,59 +75,84 @@ public class MidiaDAO {
             return false;
         }
     }
-    
-        
+
     public int IdGenero(String genero) {
         String sql = "SELECT * FROM lemonrate.categorias C where nome = ?;";
         int id = 0;
-        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, genero);
             ResultSet resultadoBD = trans.executeQuery();
-            
-            if(resultadoBD.next()){
+
+            if (resultadoBD.next()) {
                 id = resultadoBD.getInt("id");
             }
-            
-        } catch (SQLException ex){
+
+        } catch (SQLException ex) {
             System.err.println("erro ao dar get no id categoria");
         }
         return id;
-    
+
     }
-    
-    public int IdMidia(String nome){
+
+    public int IdMidia(String nome) {
         String sql = "SELECT * FROM lemonrate.midia C where nome = ?;";
         int id = 0;
-        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
             trans.setString(1, nome);
             ResultSet resultadoBD = trans.executeQuery();
-            
-            if(resultadoBD.next()){
+
+            if (resultadoBD.next()) {
                 id = resultadoBD.getInt("id");
             }
-            
-        } catch (SQLException ex){
+
+        } catch (SQLException ex) {
             System.err.println("erro ao dar get no id midia");
         }
         return id;
-        
-        
+
     }
-    
-    public boolean CadastraCategoriaMidia(int id_midia, int id_categoria){
+
+    public boolean CadastraCategoriaMidia(int id_midia, int id_categoria) {
         String sql = "INSERT INTO lemonrate.midia_categoria (id_midia,id_categoria) VALUES (?,?);";
-        
-        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
             trans.setInt(1, id_midia);
             trans.setInt(2, id_categoria);
-            
+
             trans.executeUpdate();
             return true;
-            
-        } catch (SQLException ex){
+
+        } catch (SQLException ex) {
             System.err.println("Erro ao cadastrar midia_categoria");
             return false;
         }
+
+    }
+
+    public ArrayList<Midia> ListaMidiasUsuario(int id_usuario) {
+        ArrayList<Midia> midias = new ArrayList<>();
+        String sql = "SELECT * FROM lemonrate.midia WHERE id_usuario = '" + id_usuario + "' ORDER BY nome ASC;";
         
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
+            ResultSet resultadoBanco = trans.executeQuery();
+
+            while (resultadoBanco.next()) {
+                Midia novaMidia = new Midia();
+                novaMidia.setNome(resultadoBanco.getString("nome"));
+                novaMidia.setDataUpload(resultadoBanco.getDate("dataupload"));
+                novaMidia.setDescricao(resultadoBanco.getString("descricao"));
+                novaMidia.setCriador(resultadoBanco.getString("criador"));
+                novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
+                novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
+                midias.add(novaMidia);
+                
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Erro ao puxar midiasUsuario");
+        }
+
+        System.out.println(midias);
+        return midias;
     }
 }

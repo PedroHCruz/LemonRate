@@ -51,4 +51,9 @@ public class MidiaControl {
         return this.dao.CadastraCategoriaMidia(id_midia, id_categoria);
         
     }
+    
+    public ArrayList<Midia> ListaMidiasUsuario(int id_usuario){
+        return this.dao.ListaMidiasUsuario(id_usuario);
+        
+    }
 }

@@ -4,6 +4,7 @@
  */
 package view;
 
+import control.MidiaControl;
 import control.UsuarioControl;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
@@ -16,13 +17,16 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import model.Midia;
 import model.Usuario;
 
 /**
@@ -31,19 +35,27 @@ import model.Usuario;
  */
 public class Perfil extends javax.swing.JPanel {
 
-    Usuario userSelecionado;
-    private static UsuarioControl usuarioControl;
-    ImageIcon fotoVazia;
+    private Usuario userSelecionado;
+    UsuarioControl usuarioControl;
+    MidiaControl midiaControl;
+    private ImageIcon fotoVazia;
+    private DefaultListModel<Midia> defaultmidias = new DefaultListModel<>();
 
     public Perfil() {
+        this.userSelecionado = userSelecionado;
         initComponents();
+        this.usuarioControl = new UsuarioControl();
+        this.midiaControl = new MidiaControl();
+        config(this.userSelecionado);
     }
 
     public Perfil(Usuario userSelecionado) {
         this.userSelecionado = userSelecionado;
         initComponents();
-        config(this.userSelecionado);
+        
         this.usuarioControl = new UsuarioControl();
+        this.midiaControl = new MidiaControl();
+        config(this.userSelecionado);
     }
 
     public void config(Usuario userSelecionado) {
@@ -90,6 +102,15 @@ public class Perfil extends javax.swing.JPanel {
             this.fotoPerfil.setText("");
             this.fotoPerfil.setIcon(fotoP);
         }
+        CarregaListaMidia();
+    }
+    
+    public void CarregaListaMidia(){
+        ArrayList<Midia> midias = new ArrayList<>();
+        
+        midias = midiaControl.ListaMidiasUsuario(userSelecionado.getId());
+        listaMidia.setModel(defaultmidias);
+        defaultmidias.addAll(midias);
     }
 
     /*
@@ -290,6 +311,7 @@ public class Perfil extends javax.swing.JPanel {
 
         listaMidia.setBackground(new java.awt.Color(250, 250, 250));
         listaMidia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        listaMidia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         listaMidia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(listaMidia);
 
@@ -464,7 +486,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JList<String> listaMidia;
+    private javax.swing.JList<Midia> listaMidia;
     private javax.swing.JLabel midiaTxt;
     private javax.swing.JLabel nomeTxt;
     private javax.swing.ButtonGroup sexoGroup;

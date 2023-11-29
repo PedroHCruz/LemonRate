@@ -35,6 +35,10 @@ public class Midia {
         this.id_usuario = id_usuario;
     }
 
+    public Midia() {
+    }
+    
+
     public String getNome() {
         return nome;
     }
@@ -123,11 +127,26 @@ public class Midia {
         this.id_usuario = id_usuario;
     }
 
-    
     @Override
     public String toString() {
-        return "Midia{" + "nome=" + nome + ", descricao=" + descricao + ", genero=" + genero + ", plataforma=" + plataforma + ", criador=" + criador + ", dataLancamento=" + dataLancamento + ", dataUpload=" + dataUpload + ", tipo_midia=" + tipo_midia + ", classificacao=" + classificacao + ", avaliacao=" + avaliacao + '}';
+        String tipo = "";
+        switch (tipo_midia) {
+            case 1:
+                tipo = "Filme";
+                break;
+            case 2:
+                tipo = "Série";
+                break;
+            case 3:
+                tipo = "Livro";
+                break;
+                
+        }
+        return nome + " | " + tipo + " | " + dataUpload;
     }
+
+    
+    
     
     
     
