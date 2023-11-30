@@ -4,15 +4,19 @@
  */
 package view;
 
+import control.MidiaControl;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import model.Midia;
 import model.Usuario;
 
 /**
@@ -22,18 +26,22 @@ import model.Usuario;
 public class Pesquisa extends javax.swing.JPanel {
 
     Usuario userselecionado;
+    MidiaControl midiaControl;
+    private DefaultListModel<Midia> defaultmidias = new DefaultListModel<>();
 
     public Pesquisa() {
         initComponents();
     }
 
     public Pesquisa(Usuario userSelecionado) {
+        this.midiaControl = new MidiaControl();
         this.userselecionado = userSelecionado;
         initComponents();
         config(userselecionado);
     }
 
     public void config(Usuario userSelecionado) {
+        Lmidias.setModel(defaultmidias);
 
         ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
@@ -46,6 +54,8 @@ public class Pesquisa extends javax.swing.JPanel {
         logoMini.setText("");
         perfil.setIcon(imgPerfil);
         perfil.setText("");
+        
+        populaLista();
     }
 
     /**
@@ -64,7 +74,7 @@ public class Pesquisa extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        Lmidias = new javax.swing.JList<>();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -153,8 +163,10 @@ public class Pesquisa extends javax.swing.JPanel {
 
         jScrollPane1.setToolTipText("");
 
-        jList1.setBackground(new java.awt.Color(80, 80, 80));
-        jScrollPane1.setViewportView(jList1);
+        Lmidias.setBackground(new java.awt.Color(80, 80, 80));
+        Lmidias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Lmidias.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(Lmidias);
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -293,7 +305,16 @@ public class Pesquisa extends javax.swing.JPanel {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         parentFrame.dispose();
     }
+    
+    private void populaLista(){
+        ArrayList<Midia> midias = new ArrayList<>();
+        midias = midiaControl.ListaTodasMidias();
+        defaultmidias.addAll(midias);
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<Midia> Lmidias;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -303,7 +324,6 @@ public class Pesquisa extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;

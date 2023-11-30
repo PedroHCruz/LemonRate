@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.ScrollPane;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,12 +25,14 @@ public class FrameApp_home extends javax.swing.JFrame {
     private static JPanel panelTroca;
     private static Hashtable<String, JPanel> historicoPanel;
     private static Usuario usuarioSelecionado;
+    private static ArrayList<String> paineisRepeticao;
 
     public FrameApp_home() {
         initComponents();
     }
 
     public FrameApp_home(Usuario userSelecionado) {
+        paineisRepeticao = new ArrayList<>();
         this.usuarioSelecionado = userSelecionado;
         initComponents();
         config();
@@ -37,6 +40,8 @@ public class FrameApp_home extends javax.swing.JFrame {
     }
 
     public void config() {
+        paineisRepeticao.add("Perfil");
+        paineisRepeticao.add("Biblioteca");
         this.setLayout(new BorderLayout());
         baralhoPanel = new CardLayout();
         painelRolagem = new JScrollPane();
@@ -53,7 +58,9 @@ public class FrameApp_home extends javax.swing.JFrame {
             panelTroca.add(novoPainel, nome);
             baralhoPanel.show(panelTroca, nome);
             panelTroca.setPreferredSize(novoPainel.getPreferredSize());
+            if(!paineisRepeticao.contains(nome)){
             historicoPanel.put(nome, novoPainel);
+            }
         } else {
             baralhoPanel.show(panelTroca, nome);
             panelTroca.setPreferredSize(historicoPanel.get(nome).getPreferredSize());

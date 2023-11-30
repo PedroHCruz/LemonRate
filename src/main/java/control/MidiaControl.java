@@ -56,4 +56,8 @@ public class MidiaControl {
         return this.dao.ListaMidiasUsuario(id_usuario);
         
     }
+    
+    public ArrayList<Midia> ListaTodasMidias(){
+        return this.dao.ListaTodasMidias();
+    }
 }

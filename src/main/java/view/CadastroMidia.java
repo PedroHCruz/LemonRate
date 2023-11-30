@@ -246,7 +246,7 @@ public class CadastroMidia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        FrameApp_home.trocaPanel("Perfil", new Perfil());
+        FrameApp_home.trocaPanel("Perfil", new Perfil(userSelecionado));
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_cadastroMidia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroMidia1ActionPerformed
@@ -275,10 +275,13 @@ public class CadastroMidia extends javax.swing.JPanel {
         InsercaoMidiaCategoria(id_midia);
         
         if(ok){
-            System.out.println("certo");
+            JOptionPane.showMessageDialog(this, "Mídia cadastrada com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.err.println("erro");
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar mídia", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        
+        FrameApp_home.trocaPanel("Perfil", new Perfil(userSelecionado));
     }//GEN-LAST:event_btn_cadastroMidia1ActionPerformed
 
     private void btnGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerosActionPerformed

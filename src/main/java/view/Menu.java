@@ -89,7 +89,7 @@ public class Menu extends javax.swing.JPanel {
         logoMini = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         perfil = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        label_biblioteca = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
@@ -122,9 +122,14 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Biblioteca");
+        label_biblioteca.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        label_biblioteca.setForeground(new java.awt.Color(255, 255, 255));
+        label_biblioteca.setText("Biblioteca");
+        label_biblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_bibliotecaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,7 +141,7 @@ public class Menu extends javax.swing.JPanel {
                         .addComponent(logoMini, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(247, 247, 247))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(label_biblioteca)
                         .addGap(114, 114, 114)))
                 .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101)
@@ -153,7 +158,7 @@ public class Menu extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
+                            .addComponent(label_biblioteca)
                             .addComponent(jLabel2)
                             .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -206,6 +211,10 @@ public class Menu extends javax.swing.JPanel {
         FrameApp_home.desabilitaScroll();
     }//GEN-LAST:event_perfilMouseClicked
 
+    private void label_bibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_bibliotecaMouseClicked
+        FrameApp_home.trocaPanel("Biblioteca", new Pesquisa(userselecionado));
+    }//GEN-LAST:event_label_bibliotecaMouseClicked
+
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         parentFrame.dispose();
@@ -213,10 +222,10 @@ public class Menu extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel label_biblioteca;
     private javax.swing.JLabel logoCentral;
     private javax.swing.JLabel logoMini;
     private javax.swing.JLabel perfil;

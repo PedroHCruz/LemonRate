@@ -132,7 +132,7 @@ public class MidiaDAO {
     public ArrayList<Midia> ListaMidiasUsuario(int id_usuario) {
         ArrayList<Midia> midias = new ArrayList<>();
         String sql = "SELECT * FROM lemonrate.midia WHERE id_usuario = '" + id_usuario + "' ORDER BY nome ASC;";
-        
+
         try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
             ResultSet resultadoBanco = trans.executeQuery();
 
@@ -145,7 +145,7 @@ public class MidiaDAO {
                 novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
                 novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
                 midias.add(novaMidia);
-                
+
             }
 
         } catch (SQLException ex) {
@@ -153,6 +153,30 @@ public class MidiaDAO {
         }
 
         System.out.println(midias);
+        return midias;
+    }
+
+    public ArrayList<Midia> ListaTodasMidias() {
+        ArrayList<Midia> midias = new ArrayList<>();
+        String sql = "SELECT * FROM lemonrate.midia ORDER BY id_tipo ASC;";
+
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
+            ResultSet resultadoBanco = trans.executeQuery();
+
+            while (resultadoBanco.next()) {
+                Midia novaMidia = new Midia();
+                novaMidia.setNome(resultadoBanco.getString("nome"));
+                novaMidia.setDataUpload(resultadoBanco.getDate("dataupload"));
+                novaMidia.setDescricao(resultadoBanco.getString("descricao"));
+                novaMidia.setCriador(resultadoBanco.getString("criador"));
+                novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
+                novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
+                midias.add(novaMidia);
+
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao puxar TodasMidias");
+        }
         return midias;
     }
 }
