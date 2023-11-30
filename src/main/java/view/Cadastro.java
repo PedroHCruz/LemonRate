@@ -58,6 +58,11 @@ public class Cadastro extends javax.swing.JPanel {
         lblFundo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(398, 598));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -330,6 +335,7 @@ public class Cadastro extends javax.swing.JPanel {
 
         if (ok == true) {
             JOptionPane.showMessageDialog(this, "Usuario cadastrado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            FrameApp_Login.trocaPainel("Login", new Login());
         }
         } else {
             JOptionPane.showMessageDialog(this, "As senhas devem ser iguais!", "Sucesso", JOptionPane.ERROR_MESSAGE);
@@ -357,6 +363,10 @@ public class Cadastro extends javax.swing.JPanel {
     private void cadastrarBTNMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseExited
         this.cadastrarBTN.setForeground(new Color(0,51,0));
     }//GEN-LAST:event_cadastrarBTNMouseExited
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

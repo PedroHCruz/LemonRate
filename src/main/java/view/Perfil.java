@@ -404,7 +404,7 @@ public class Perfil extends javax.swing.JPanel {
             boolean ok = usuarioControl.uptadeUsuario(novoNome, novoEmail, id, novoGenero, novaDesc, data, novaFoto);
             if (ok == true) {
                 this.nomeTxt.setText(novoNome);
-                if (userSelecionado.getUrlFoto() == null) {
+                if (Furl == null) {
                     this.fotoPerfil.setText("");
                     this.fotoPerfil.setIcon(fotoVazia);
                 } else {

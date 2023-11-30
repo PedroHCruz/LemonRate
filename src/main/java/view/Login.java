@@ -81,6 +81,11 @@ public class Login extends javax.swing.JPanel {
                 emailFFocusLost(evt);
             }
         });
+        emailF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailFKeyPressed(evt);
+            }
+        });
         jPanel2.add(emailF, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 198, 340, 42));
 
         entrarBTN.setBackground(new java.awt.Color(230, 230, 230));
@@ -124,6 +129,11 @@ public class Login extends javax.swing.JPanel {
         senhaF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaFActionPerformed(evt);
+            }
+        });
+        senhaF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                senhaFKeyPressed(evt);
             }
         });
         jPanel2.add(senhaF, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 322, 340, 42));
@@ -267,6 +277,46 @@ public class Login extends javax.swing.JPanel {
         this.entrarBTN.setForeground(new Color(0,51,0));
     }//GEN-LAST:event_entrarBTNMouseExited
 
+    private void senhaFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaFKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+        String email = emailF.getText();
+        String senha = String.valueOf(senhaF.getPassword());
+        boolean ok = this.usuarioControl.logaUsuario(email, senha);
+
+        if (ok == true) {
+            Usuario userLogado;
+            userLogado = this.usuarioControl.getUsuario(email, senha);
+            FrameApp_home janela = new FrameApp_home(userLogado);
+            janela.setVisible(true);
+            JFrame frameParent = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frameParent.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Email ou senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }//GEN-LAST:event_senhaFKeyPressed
+
+    private void emailFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+        String email = emailF.getText();
+        String senha = String.valueOf(senhaF.getPassword());
+        boolean ok = this.usuarioControl.logaUsuario(email, senha);
+
+        if (ok == true) {
+            Usuario userLogado;
+            userLogado = this.usuarioControl.getUsuario(email, senha);
+            FrameApp_home janela = new FrameApp_home(userLogado);
+            janela.setVisible(true);
+            JFrame frameParent = (JFrame) SwingUtilities.getWindowAncestor(this);
+            frameParent.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Email ou senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+    }//GEN-LAST:event_emailFKeyPressed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bemvindoTxt;
