@@ -144,6 +144,8 @@ public class MidiaDAO {
                 novaMidia.setCriador(resultadoBanco.getString("criador"));
                 novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
                 novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
+                novaMidia.setDataLancamento(resultadoBanco.getDate("datalancamento"));
+                novaMidia.setAvaliacao(resultadoBanco.getInt("avaliacao"));
                 midias.add(novaMidia);
 
             }

@@ -6,9 +6,8 @@ package model;
 
 import java.util.Date;
 
-
 public class Midia {
-    
+
     private String nome;
     private String descricao;
     private String genero;
@@ -37,7 +36,6 @@ public class Midia {
 
     public Midia() {
     }
-    
 
     public String getNome() {
         return nome;
@@ -140,14 +138,27 @@ public class Midia {
             case 3:
                 tipo = "Livro";
                 break;
-                
+
         }
         return nome + " | " + tipo + " | " + dataUpload;
     }
 
-    
-    
-    
-    
-    
+    public String getTipoMidiaString() {
+        String tipo = "";
+        switch (tipo_midia) {
+            case 1:
+                tipo = "Filme";
+                break;
+            case 2:
+                tipo = "Série";
+                break;
+            case 3:
+                tipo = "Livro";
+                break;
+
+        }
+        return tipo;
+
+    }
+
 }

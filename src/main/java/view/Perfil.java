@@ -102,16 +102,16 @@ public class Perfil extends javax.swing.JPanel {
             this.fotoPerfil.setText("");
             this.fotoPerfil.setIcon(fotoP);
         }
-        CarregaListaMidia();
+        Tmidia.setModel(new MidiaTableModel(Tmidia, userSelecionado.getId()));
     }
     
-    public void CarregaListaMidia(){
+    /*public void CarregaListaMidia(){
         ArrayList<Midia> midias = new ArrayList<>();
         
         midias = midiaControl.ListaMidiasUsuario(userSelecionado.getId());
         listaMidia.setModel(defaultmidias);
         defaultmidias.addAll(midias);
-    }
+    }*/
 
     /*
     ## METODO IMAGE PARA BYTES<
@@ -164,13 +164,13 @@ public class Perfil extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         FsobreMim = new javax.swing.JTextArea();
         txtSobreMim = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaMidia = new javax.swing.JList<>();
         btn_salvar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
         btn_verDetalhes = new javax.swing.JButton();
         Furl = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Tmidia = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -306,17 +306,6 @@ public class Perfil extends javax.swing.JPanel {
         txtSobreMim.setText("Sobre mim:");
         jPanel3.add(txtSobreMim, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
-        jScrollPane1.setBackground(new java.awt.Color(250, 250, 250));
-        jScrollPane1.setBorder(null);
-
-        listaMidia.setBackground(new java.awt.Color(250, 250, 250));
-        listaMidia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        listaMidia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        listaMidia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(listaMidia);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 680, 410));
-
         btn_salvar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btn_salvar.setText("Salvar");
         btn_salvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -364,6 +353,31 @@ public class Perfil extends javax.swing.JPanel {
 
         jLabel2.setText("Foto URL:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
+
+        jScrollPane3.setBackground(new java.awt.Color(250, 250, 250));
+
+        Tmidia.setBackground(new java.awt.Color(250, 250, 250));
+        Tmidia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Tmidia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        Tmidia.setCellSelectionEnabled(true);
+        Tmidia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        Tmidia.setShowGrid(true);
+        Tmidia.setShowHorizontalLines(false);
+        Tmidia.getTableHeader().setResizingAllowed(false);
+        Tmidia.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(Tmidia);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 690, 400));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 790));
     }// </editor-fold>//GEN-END:initComponents
@@ -471,6 +485,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JRadioButton Foutro;
     private javax.swing.JTextArea FsobreMim;
     private javax.swing.JTextField Furl;
+    private javax.swing.JTable Tmidia;
     private javax.swing.JButton btn_cadastroMidia;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_salvar;
@@ -481,12 +496,11 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JList<Midia> listaMidia;
     private javax.swing.JLabel midiaTxt;
     private javax.swing.JLabel nomeTxt;
     private javax.swing.ButtonGroup sexoGroup;
