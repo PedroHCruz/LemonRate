@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import model.Midia;
 
-public class MidiaTableModel extends AbstractTableModel {
+public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     private ArrayList<Midia> MidiasUsuario;
     private String nomeColunas[] = {"Nome", "Tipo", "Data Lancamento", "Avaliação", "Data Upload"};
@@ -17,7 +17,7 @@ public class MidiaTableModel extends AbstractTableModel {
     private MidiaControl midiaControl;
     private JTable TabelaGUI;
 
-    public MidiaTableModel(JTable TabelaGUI, int id_usuario) {
+    public MidiaTableModelPesquisa(JTable TabelaGUI, int id_usuario) {
         this.midiaControl = new MidiaControl();
         CarregaMidias(id_usuario);
         this.TabelaGUI = TabelaGUI;
@@ -27,7 +27,7 @@ public class MidiaTableModel extends AbstractTableModel {
 
     public void CarregaMidias(int id_usuario) {
         this.MidiasUsuario = new ArrayList<>();
-        this.MidiasUsuario = this.midiaControl.ListaMidiasUsuario(id_usuario);
+        this.MidiasUsuario = this.midiaControl.ListaTodasMidias();
         
     }
 

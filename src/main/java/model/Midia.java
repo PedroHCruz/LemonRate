@@ -125,6 +125,8 @@ public class Midia {
         this.id_usuario = id_usuario;
     }
 
+    
+    
     @Override
     public String toString() {
         String tipo = "";
@@ -159,6 +161,17 @@ public class Midia {
         }
         return tipo;
 
+    }
+    
+    public void setTipoMidiaString(String midia){
+        switch (midia) {
+            case "Filme":
+                this.tipo_midia = 1;
+            case "Série":
+                this.tipo_midia = 2;    
+            case "Livro":
+                this.tipo_midia = 3;
+        }
     }
 
 }
