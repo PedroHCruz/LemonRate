@@ -368,6 +368,7 @@ public class Perfil extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tmidia.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Tmidia);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 680, 410));
@@ -398,6 +399,7 @@ public class Perfil extends javax.swing.JPanel {
             novoEmail = Femail.getText();
             novaFoto = Furl.getText();
             String novaDesc = FsobreMim.getText();
+            AtualizaUser(novoNome, novaDesc, novoEmail, novaFoto);
             Date data = new Date();
             if (!Fdata.getText().equals("  /  /    ")) {
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -440,6 +442,13 @@ public class Perfil extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
+    private void AtualizaUser(String nome, String desc, String email, String url){
+        userSelecionado.setNome(nome);
+        userSelecionado.setDescricao(desc);
+        userSelecionado.setEmail(email);
+        userSelecionado.setUrlFoto(url);
+    }
+    
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         this.Fnome.setEnabled(true);
         this.Femail.setEnabled(true);

@@ -60,4 +60,11 @@ public class MidiaControl {
     public ArrayList<Midia> ListaTodasMidias(){
         return this.dao.ListaTodasMidias();
     }
+    
+    public boolean AtualizaMidia(Midia novaMidia, String nome){
+        return this.dao.AtualizaMidia(novaMidia, nome);
+    }
+    public String getNomeUsuario(int id_usuario){
+        return this.dao.getNomeUsuario(id_usuario);
+    }
 }

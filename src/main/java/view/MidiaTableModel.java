@@ -86,7 +86,7 @@ public class MidiaTableModel extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-         if(columnIndex != 4){
+         if(columnIndex != 4 && columnIndex != 2){
              return true;
          } else {
              return false;
@@ -96,6 +96,7 @@ public class MidiaTableModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
             Midia midia = this.MidiasUsuario.get(rowIndex);
+            String nome = midia.getNome();
             
             switch (columnIndex){
                 case 0:
@@ -108,11 +109,15 @@ public class MidiaTableModel extends AbstractTableModel {
                     midia.setDataLancamento((Date) aValue);
                     break;
                 case 3:
+                    int ava = (int) aValue;
+                    if(ava > 0 && ava < 6){
                     midia.setAvaliacao((int) aValue);
+                    }
+                }
                     
-            }
+            
             
             this.TabelaGUI.updateUI();
-            
+            this.midiaControl.AtualizaMidia(midia, nome);
 }
 }

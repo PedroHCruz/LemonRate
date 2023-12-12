@@ -166,11 +166,13 @@ public class Midia {
     public void setTipoMidiaString(String midia){
         switch (midia) {
             case "Filme":
-                this.tipo_midia = 1;
+                tipo_midia = 1;
+                break;
             case "Série":
-                this.tipo_midia = 2;    
+                tipo_midia = 2;    
+                break;
             case "Livro":
-                this.tipo_midia = 3;
+                tipo_midia = 3;
         }
     }
 

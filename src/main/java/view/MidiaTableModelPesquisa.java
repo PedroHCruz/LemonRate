@@ -12,7 +12,7 @@ import model.Midia;
 public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     private ArrayList<Midia> MidiasUsuario;
-    private String nomeColunas[] = {"Nome", "Tipo", "Data Lancamento", "Avaliação", "Data Upload"};
+    private String nomeColunas[] = {"Usuario", "Nome", "Tipo", "Data Lancamento", "Avaliação", "Data Upload"};
 
     private MidiaControl midiaControl;
     private JTable TabelaGUI;
@@ -38,7 +38,7 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -47,14 +47,17 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0:
-                return midia.getNome();
+                String nome = this.midiaControl.getNomeUsuario(midia.getId_usuario());
+                return nome;
             case 1:
-                return midia.getTipoMidiaString();
+                return midia.getNome();
             case 2:
-                return midia.getDataLancamento();
+                return midia.getTipoMidiaString();
             case 3:
-                return midia.getAvaliacao();
+                return midia.getDataLancamento();
             case 4:
+                return midia.getAvaliacao();
+            case 5:
                 return midia.getDataUpload();
             default:
                 throw new AssertionError();
@@ -74,10 +77,12 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
             case 1:
                 return String.class;
             case 2:
-                return Date.class;
+                return String.class;
             case 3:
-                return Integer.class;
+                return Date.class;
             case 4:
+                return Integer.class;
+            case 5:
                 return Date.class;
             default:
                 return Integer.class;
@@ -86,33 +91,8 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-         if(columnIndex != 4){
-             return true;
-         } else {
-             return false;
-         }
+         return false;
     }
+     
 
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-            Midia midia = this.MidiasUsuario.get(rowIndex);
-            
-            switch (columnIndex){
-                case 0:
-                    midia.setNome((String) aValue);
-                    break;
-                case 1:
-                    midia.setTipoMidiaString((String) aValue);
-                    break;
-                case 2:
-                    midia.setDataLancamento((Date) aValue);
-                    break;
-                case 3:
-                    midia.setAvaliacao((int) aValue);
-                    
-            }
-            
-            this.TabelaGUI.updateUI();
-            
-}
 }

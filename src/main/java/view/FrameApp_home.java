@@ -58,12 +58,13 @@ public class FrameApp_home extends javax.swing.JFrame {
             panelTroca.add(novoPainel, nome);
             baralhoPanel.show(panelTroca, nome);
             panelTroca.setPreferredSize(novoPainel.getPreferredSize());
-            if(!paineisRepeticao.contains(nome)){
-            historicoPanel.put(nome, novoPainel);
+            if (!paineisRepeticao.contains(nome)) {
+                historicoPanel.put(nome, novoPainel);
             }
         } else {
             baralhoPanel.show(panelTroca, nome);
             panelTroca.setPreferredSize(historicoPanel.get(nome).getPreferredSize());
+
         }
     }
 
@@ -75,7 +76,6 @@ public class FrameApp_home extends javax.swing.JFrame {
     public static void habilitaScroll() {
         painelRolagem.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.

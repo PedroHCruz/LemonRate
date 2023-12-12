@@ -146,6 +146,7 @@ public class MidiaDAO {
                 novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
                 novaMidia.setDataLancamento(resultadoBanco.getDate("datalancamento"));
                 novaMidia.setAvaliacao(resultadoBanco.getInt("avaliacao"));
+                novaMidia.setId_usuario(resultadoBanco.getInt("id_usuario"));
                 midias.add(novaMidia);
 
             }
@@ -173,6 +174,9 @@ public class MidiaDAO {
                 novaMidia.setCriador(resultadoBanco.getString("criador"));
                 novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
                 novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
+                novaMidia.setAvaliacao(resultadoBanco.getInt("avaliacao"));
+                novaMidia.setDataLancamento(resultadoBanco.getDate("datalancamento"));
+                novaMidia.setId_usuario(resultadoBanco.getInt("id_usuario"));
                 midias.add(novaMidia);
 
             }
@@ -181,4 +185,49 @@ public class MidiaDAO {
         }
         return midias;
     }
+
+    public boolean AtualizaMidia(Midia novaMidia, String nome) {
+        String sql = "UPDATE lemonrate.midia SET nome = ?,"
+                + " id_tipo = ?,"
+                + " datalancamento = ?,"
+                + " avaliacao = ? WHERE id = ?";
+
+        java.sql.Date dataLan = new java.sql.Date(novaMidia.getDataLancamento().getTime());
+        int id = IdMidia(nome);
+        try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
+            trans.setString(1, novaMidia.getNome());
+            trans.setInt(2, novaMidia.getTipo_midia());
+            trans.setDate(3, dataLan);
+            trans.setInt(4, novaMidia.getAvaliacao());
+            trans.setInt(5, id);
+            trans.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro update");
+            return false;
+        }
+
+    }
+
+    public String getNomeUsuario(int id_usuario) {
+        String nome = "";
+        String sql = "SELECT U.nome FROM lemonrate.midia M"
+                + " JOIN lemonrate.usuario U ON M.id_usuario = U.id"
+                + " WHERE U.id = '" + id_usuario + "';";
+        
+        try(PreparedStatement trans = conexaoBanco.prepareStatement(sql)){
+            ResultSet resultadoBD = trans.executeQuery();
+            
+            if(resultadoBD.next()){
+                nome = resultadoBD.getString("nome");
+
+            }
+            
+        } catch (SQLException ex){
+            System.err.println("Erro getNome");
+            ex.printStackTrace();
+        }
+        return nome;
+    }
+
 }
