@@ -4,7 +4,6 @@
  */
 package view;
 
-import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,16 +34,24 @@ public class Menu extends javax.swing.JPanel {
 
     public void config(Usuario userSelecionado) {
 
+
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
         ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
-        ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHome.png");
+        ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHomeV2.png");
         ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
         ImageIcon imgPerfil = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\perfil.png");
         ImageIcon imgSerie = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\serie.png");
         ImageIcon imgLivro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\livro.png");
         ImageIcon imgFilme = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\filme.png");
-
+        ImageIcon Ifoto1 = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fotoRay.jpg");
+        ImageIcon Ifoto2 = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fotoPedro.jpg");
+        ImageIcon Ifoto3 = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fotoMansur.jpg");
+        
+        Ifoto1.setImage(Ifoto1.getImage().getScaledInstance(402, 460, 100));
+        Ifoto2.setImage(Ifoto2.getImage().getScaledInstance(402, 460, 100));
+        Ifoto3.setImage(Ifoto3.getImage().getScaledInstance(402, 460, 100));
+        
         imgLogolimao.setImage(imgLogolimao.getImage().getScaledInstance(80, 80, 100));
         logoCentral.setIcon(imgLogocentro);
         logoCentral.setText("");
@@ -54,6 +61,12 @@ public class Menu extends javax.swing.JPanel {
         logoMini.setText("");
         perfil.setIcon(imgPerfil);
         perfil.setText("");
+        foto1.setIcon(Ifoto1);
+        foto1.setText("");
+        foto2.setIcon(Ifoto2);
+        foto2.setText("");
+        foto3.setIcon(Ifoto3);
+        foto3.setText("");
     }
 
     /*
@@ -92,6 +105,12 @@ public class Menu extends javax.swing.JPanel {
         label_biblioteca = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        foto1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        foto2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        foto3 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1270, 3000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,19 +186,34 @@ public class Menu extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setText("back");
+        jPanel6.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1236, 679));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1236, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        foto1.setText("Foto");
+        foto1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        foto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                foto1MouseEntered(evt);
+            }
+        });
+        jPanel3.add(foto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 402, 460));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        foto2.setText("Foto");
+        foto2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(foto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 402, 460));
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        foto3.setText("Foto");
+        foto3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.add(foto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 402, 460));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,7 +224,14 @@ public class Menu extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,7 +240,12 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2222, Short.MAX_VALUE))
+                .addGap(424, 424, 424)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 1338, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -215,15 +261,25 @@ public class Menu extends javax.swing.JPanel {
         FrameApp_home.trocaPanel("Biblioteca", new Pesquisa(userselecionado));
     }//GEN-LAST:event_label_bibliotecaMouseClicked
 
+    private void foto1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foto1MouseEntered
+        
+    }//GEN-LAST:event_foto1MouseEntered
+
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         parentFrame.dispose();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel foto1;
+    private javax.swing.JLabel foto2;
+    private javax.swing.JLabel foto3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel label_biblioteca;
     private javax.swing.JLabel logoCentral;

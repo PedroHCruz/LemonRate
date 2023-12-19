@@ -59,6 +59,8 @@ public class Perfil extends javax.swing.JPanel {
     }
 
     public void config(Usuario userSelecionado) {
+        ImageIcon backPerfil = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\backPerfil.png");
+        this.txtBackPerfil.setIcon(backPerfil);
         String nomeUsuario = userSelecionado.getNome();
         String emailUsuario = userSelecionado.getEmail();
         String desc = userSelecionado.getDescricao();
@@ -144,7 +146,7 @@ public class Perfil extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         fotoPerfil = new javax.swing.JLabel();
         fundo = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        txtBackPerfil = new javax.swing.JLabel();
         nomeTxt = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         midiaTxt = new javax.swing.JLabel();
@@ -185,31 +187,18 @@ public class Perfil extends javax.swing.JPanel {
 
         fundo.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Voltar");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
+        txtBackPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtBackPerfil.setText("back");
 
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
         fundo.setLayout(fundoLayout);
         fundoLayout.setHorizontalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fundoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel3)
-                .addContainerGap(1188, Short.MAX_VALUE))
+            .addComponent(txtBackPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
         );
         fundoLayout.setVerticalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fundoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel3)
-                .addContainerGap(129, Short.MAX_VALUE))
+            .addComponent(txtBackPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel3.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));
@@ -236,7 +225,7 @@ public class Perfil extends javax.swing.JPanel {
                 btn_cadastroMidiaActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 720, 190, 30));
+        jPanel3.add(btn_cadastroMidia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 720, 190, 30));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 700, 10));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 530, 10));
 
@@ -334,18 +323,17 @@ public class Perfil extends javax.swing.JPanel {
         jPanel3.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 720, 160, 30));
 
         btn_verDetalhes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btn_verDetalhes.setText("Ver Detalhes/Editar");
+        btn_verDetalhes.setText("Voltar");
         btn_verDetalhes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_verDetalhes.setContentAreaFilled(false);
         btn_verDetalhes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_verDetalhes.setEnabled(false);
         btn_verDetalhes.setFocusable(false);
         btn_verDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_verDetalhesActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_verDetalhes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 720, 190, 30));
+        jPanel3.add(btn_verDetalhes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 720, 190, 30));
 
         Furl.setBackground(new java.awt.Color(250, 250, 250));
         Furl.setEnabled(false);
@@ -463,14 +451,10 @@ public class Perfil extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_verDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verDetalhesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_verDetalhesActionPerformed
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         FrameApp_home.trocaPanel("home", new Menu());
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         FrameApp_home.habilitaScroll();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_btn_verDetalhesActionPerformed
 
     public String converteDataString(Date data) {
         DateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
@@ -496,7 +480,6 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JPanel fundo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -506,6 +489,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JLabel midiaTxt;
     private javax.swing.JLabel nomeTxt;
     private javax.swing.ButtonGroup sexoGroup;
+    private javax.swing.JLabel txtBackPerfil;
     private javax.swing.JLabel txtData;
     private javax.swing.JLabel txtEmail;
     private javax.swing.JLabel txtNome;
