@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.Midia;
 import model.Usuario;
@@ -37,11 +38,11 @@ public class Pesquisa extends javax.swing.JPanel {
         this.midiaControl = new MidiaControl();
         this.userselecionado = userSelecionado;
         initComponents();
-        config(userselecionado);
+        config();
     }
 
-    public void config(Usuario userSelecionado) {
-        Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, userSelecionado.getId()));
+    public void config() {
+        Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 0, userselecionado.getId()));
 
         ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
         ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
@@ -55,7 +56,6 @@ public class Pesquisa extends javax.swing.JPanel {
         perfil.setIcon(imgPerfil);
         perfil.setText("");
         
-        populaLista();
     }
 
     /**
@@ -66,6 +66,7 @@ public class Pesquisa extends javax.swing.JPanel {
     private void initComponents() {
 
         PesquisaNome = new javax.swing.ButtonGroup();
+        FiltroMidia = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         logoCentral = new javax.swing.JLabel();
@@ -76,14 +77,14 @@ public class Pesquisa extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tmidia = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Fnome = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        Rusuario = new javax.swing.JRadioButton();
+        Rmidia = new javax.swing.JRadioButton();
+        Rfilme = new javax.swing.JRadioButton();
+        Rserie = new javax.swing.JRadioButton();
+        Rlivro = new javax.swing.JRadioButton();
         btnVoltar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1270, 788));
@@ -176,33 +177,42 @@ public class Pesquisa extends javax.swing.JPanel {
         Tmidia.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(Tmidia);
 
-        jButton1.setText("Pesquisar");
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome:");
 
-        PesquisaNome.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Usuário");
-        jRadioButton1.setContentAreaFilled(false);
+        PesquisaNome.add(Rusuario);
+        Rusuario.setForeground(new java.awt.Color(255, 255, 255));
+        Rusuario.setSelected(true);
+        Rusuario.setText("Usuário");
+        Rusuario.setContentAreaFilled(false);
 
-        PesquisaNome.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Mídia");
-        jRadioButton2.setContentAreaFilled(false);
+        PesquisaNome.add(Rmidia);
+        Rmidia.setForeground(new java.awt.Color(255, 255, 255));
+        Rmidia.setText("Mídia");
+        Rmidia.setContentAreaFilled(false);
 
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Filme");
-        jRadioButton3.setContentAreaFilled(false);
+        FiltroMidia.add(Rfilme);
+        Rfilme.setForeground(new java.awt.Color(255, 255, 255));
+        Rfilme.setSelected(true);
+        Rfilme.setText("Filme");
+        Rfilme.setContentAreaFilled(false);
 
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("Série");
-        jRadioButton4.setContentAreaFilled(false);
+        FiltroMidia.add(Rserie);
+        Rserie.setForeground(new java.awt.Color(255, 255, 255));
+        Rserie.setText("Série");
+        Rserie.setContentAreaFilled(false);
 
-        jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton5.setText("Livro");
-        jRadioButton5.setContentAreaFilled(false);
+        FiltroMidia.add(Rlivro);
+        Rlivro.setForeground(new java.awt.Color(255, 255, 255));
+        Rlivro.setText("Livro");
+        Rlivro.setContentAreaFilled(false);
 
         btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar.setText("Voltar");
@@ -230,18 +240,18 @@ public class Pesquisa extends javax.swing.JPanel {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(35, 35, 35)
-                                .addComponent(jRadioButton1)
+                                .addComponent(Rusuario)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
+                                .addComponent(Rmidia)
                                 .addGap(463, 463, 463)
-                                .addComponent(jRadioButton3)
+                                .addComponent(Rfilme)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton4)
+                                .addComponent(Rserie)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton5))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Rlivro))
+                            .addComponent(Fnome, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -252,15 +262,15 @@ public class Pesquisa extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(Rusuario)
+                    .addComponent(Rmidia)
+                    .addComponent(Rfilme)
+                    .addComponent(Rserie)
+                    .addComponent(Rlivro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Fnome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -300,36 +310,80 @@ public class Pesquisa extends javax.swing.JPanel {
         FrameApp_home.habilitaScroll();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        try{
+        String nome = this.Fnome.getText();
+        if(nome.equalsIgnoreCase("")){
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 0, userselecionado.getId()));
+            return;
+        }
+        int tipo_midia = 0;
+        ArrayList<Midia> midias = new ArrayList<>();
+        if(this.Rusuario.isSelected()){
+        if(Rfilme.isSelected()){
+            midias = midiaControl.getFiltroUsuario(nome, 1);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 1, midias.get(0).getId_usuario()));
+        }
+        if(Rserie.isSelected()){
+            midias = midiaControl.getFiltroUsuario(nome, 2);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 2, midias.get(0).getId_usuario()));
+        }
+        if(Rlivro.isSelected()){
+            midias = midiaControl.getFiltroUsuario(nome, 3);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 3, midias.get(0).getId_usuario()));
+        }
+        if(!Rfilme.isSelected() && !Rserie.isSelected() && !Rlivro.isSelected()){
+            
+        Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 0, midias.get(0).getId_usuario()));
+        }
+        } else {
+        if(Rfilme.isSelected()){
+            midias = midiaControl.getFiltroMidia(nome, 1);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
+        }
+        if(Rserie.isSelected()){
+            midias = midiaControl.getFiltroMidia(nome, 2);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
+        }
+        if(Rlivro.isSelected()){
+            midias = midiaControl.getFiltroMidia(nome, 3);
+            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
+        }
+        if(!Rfilme.isSelected() && !Rserie.isSelected() && !Rlivro.isSelected()){
+            
+        Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 0, midias.get(0).getId_usuario()));
+        }
+        }
+        } catch (IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Nome não encontrado!", "Não encontrou!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
     private void fecharJanela() {
         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         parentFrame.dispose();
     }
-    
-    private void populaLista(){
-        ArrayList<Midia> midias = new ArrayList<>();
-        midias = midiaControl.ListaTodasMidias();
-        defaultmidias.addAll(midias);
-        
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup FiltroMidia;
+    private javax.swing.JTextField Fnome;
     private javax.swing.ButtonGroup PesquisaNome;
+    private javax.swing.JRadioButton Rfilme;
+    private javax.swing.JRadioButton Rlivro;
+    private javax.swing.JRadioButton Rmidia;
+    private javax.swing.JRadioButton Rserie;
+    private javax.swing.JRadioButton Rusuario;
     private javax.swing.JTable Tmidia;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logoCentral;
     private javax.swing.JLabel logoMini;
     private javax.swing.JLabel perfil;

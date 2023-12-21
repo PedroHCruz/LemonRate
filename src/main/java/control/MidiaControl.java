@@ -67,4 +67,11 @@ public class MidiaControl {
     public String getNomeUsuario(int id_usuario){
         return this.dao.getNomeUsuario(id_usuario);
     }
+    
+    public ArrayList<Midia> getFiltroUsuario(String nome, int id_tipo){
+        return this.dao.getFiltroUsuario(nome, id_tipo);
+    }
+    public ArrayList<Midia> getFiltroMidia(String nome, int id_tipo){
+        return this.dao.getFiltroMidia(nome, id_tipo);
+    }
 }

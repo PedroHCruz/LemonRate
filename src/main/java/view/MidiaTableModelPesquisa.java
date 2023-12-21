@@ -17,18 +17,43 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
     private MidiaControl midiaControl;
     private JTable TabelaGUI;
 
-    public MidiaTableModelPesquisa(JTable TabelaGUI, int id_usuario) {
+    public MidiaTableModelPesquisa(JTable TabelaGUI, String nome_usuario, int id_tipo, int id_usuario) {
         this.midiaControl = new MidiaControl();
-        CarregaMidias(id_usuario);
+        CarregaMidias(nome_usuario, id_tipo, id_usuario);
         this.TabelaGUI = TabelaGUI;
-        
-    }
-    
 
-    public void CarregaMidias(int id_usuario) {
+    }
+
+    public void CarregaMidias(String nome_usuario, int id_tipo, int id_usuario) {
         this.MidiasUsuario = new ArrayList<>();
-        this.MidiasUsuario = this.midiaControl.ListaTodasMidias();
-        
+        if (nome_usuario.equalsIgnoreCase("")) {
+            if (id_tipo == 0) {
+                this.MidiasUsuario = this.midiaControl.ListaTodasMidias();
+            } else {
+                if(id_tipo == 1){
+                    this.MidiasUsuario = this.midiaControl.getFiltroMidia(nome_usuario, id_tipo);
+                }
+                if(id_tipo == 2){
+                    this.MidiasUsuario = this.midiaControl.getFiltroMidia(nome_usuario, id_tipo);
+                }
+                if(id_tipo == 3){
+                    this.MidiasUsuario = this.midiaControl.getFiltroMidia(nome_usuario, id_tipo);
+                }
+            }
+        } else {
+            if (id_tipo == 0) {
+                this.MidiasUsuario = this.midiaControl.ListaMidiasUsuario(id_usuario);
+            }
+            if (id_tipo == 1) {
+                this.MidiasUsuario = this.midiaControl.getFiltroUsuario(nome_usuario, id_tipo);
+            }
+            if (id_tipo == 2) {
+                this.MidiasUsuario = this.midiaControl.getFiltroUsuario(nome_usuario, id_tipo);
+            }
+            if (id_tipo == 3) {
+                this.MidiasUsuario = this.midiaControl.getFiltroUsuario(nome_usuario, id_tipo);
+            }
+        }
     }
 
     @Override
@@ -71,7 +96,7 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        switch(columnIndex){
+        switch (columnIndex) {
             case 0:
                 return String.class;
             case 1:
@@ -91,8 +116,7 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-         return false;
+        return false;
     }
-     
 
 }

@@ -38,7 +38,7 @@ public class Menu extends javax.swing.JPanel {
         String nomeUsuario = userSelecionado.getNome();
         String primeiroNome = nomeUsuario.split(" ")[0];
         ImageIcon imgLogocentro = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo.png");
-        ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHomeV2.png");
+        ImageIcon imgbackground = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\fundoHome.png");
         ImageIcon imgLogolimao = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\logo_mini.png");
         ImageIcon imgPerfil = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\perfil.png");
         ImageIcon imgSerie = new ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\serie.png");
@@ -112,12 +112,12 @@ public class Menu extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         foto3 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1270, 3000));
+        setPreferredSize(new java.awt.Dimension(1270, 2000));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1250, 3000));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1250, 2000));
 
         jPanel2.setBackground(new java.awt.Color(32, 32, 32));
         jPanel2.setPreferredSize(new java.awt.Dimension(1250, 82));
@@ -245,7 +245,7 @@ public class Menu extends javax.swing.JPanel {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 1338, Short.MAX_VALUE))
+                .addGap(0, 338, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
