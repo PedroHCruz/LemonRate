@@ -262,43 +262,12 @@ public class MidiaDAO {
         return midias;
     }
     
-     public ArrayList<Midia> getFiltroMidia(String nome, int id_tipo){
-        ArrayList<Midia> midias = new ArrayList<>();
-        String sql = "SELECT * FROM lemonrate.midia WHERE nome = '" + nome + "' AND id_tipo = '" + id_tipo + "' ORDER BY nome ASC;";
-        
-       try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
-            ResultSet resultadoBanco = trans.executeQuery();
-
-            while (resultadoBanco.next()) {
-                Midia novaMidia = new Midia();
-                novaMidia.setNome(resultadoBanco.getString("nome"));
-                novaMidia.setDataUpload(resultadoBanco.getDate("dataupload"));
-                novaMidia.setDescricao(resultadoBanco.getString("descricao"));
-                novaMidia.setCriador(resultadoBanco.getString("criador"));
-                novaMidia.setPlataforma(resultadoBanco.getString("plataforma"));
-                novaMidia.setTipo_midia(resultadoBanco.getInt("id_tipo"));
-                novaMidia.setDataLancamento(resultadoBanco.getDate("datalancamento"));
-                novaMidia.setAvaliacao(resultadoBanco.getInt("avaliacao"));
-                novaMidia.setId_usuario(resultadoBanco.getInt("id_usuario"));
-                midias.add(novaMidia);
-
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Erro ao puxar midiasUsuario");
-            ex.printStackTrace();
-        }
-
-        System.out.println(midias);
-        return midias;
-    }
-
+     
     
     public int Idusuario(String nome) {
-        String sql = "SELECT * FROM lemonrate.usuario C where nome = ?;";
+        String sql = "SELECT * FROM lemonrate.usuario C where nome LIKE '" + nome + "%'";
         int id = 0;
         try (PreparedStatement trans = conexaoBanco.prepareStatement(sql)) {
-            trans.setString(1, nome);
             ResultSet resultadoBD = trans.executeQuery();
 
             if (resultadoBD.next()) {

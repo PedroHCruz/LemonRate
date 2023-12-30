@@ -80,8 +80,6 @@ public class Pesquisa extends javax.swing.JPanel {
         Fnome = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Rusuario = new javax.swing.JRadioButton();
-        Rmidia = new javax.swing.JRadioButton();
         Rfilme = new javax.swing.JRadioButton();
         Rserie = new javax.swing.JRadioButton();
         Rlivro = new javax.swing.JRadioButton();
@@ -187,17 +185,6 @@ public class Pesquisa extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome:");
 
-        PesquisaNome.add(Rusuario);
-        Rusuario.setForeground(new java.awt.Color(255, 255, 255));
-        Rusuario.setSelected(true);
-        Rusuario.setText("Usuário");
-        Rusuario.setContentAreaFilled(false);
-
-        PesquisaNome.add(Rmidia);
-        Rmidia.setForeground(new java.awt.Color(255, 255, 255));
-        Rmidia.setText("Mídia");
-        Rmidia.setContentAreaFilled(false);
-
         FiltroMidia.add(Rfilme);
         Rfilme.setForeground(new java.awt.Color(255, 255, 255));
         Rfilme.setSelected(true);
@@ -239,11 +226,7 @@ public class Pesquisa extends javax.swing.JPanel {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(35, 35, 35)
-                                .addComponent(Rusuario)
-                                .addGap(18, 18, 18)
-                                .addComponent(Rmidia)
-                                .addGap(463, 463, 463)
+                                .addGap(632, 632, 632)
                                 .addComponent(Rfilme)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Rserie)
@@ -262,8 +245,6 @@ public class Pesquisa extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Rusuario)
-                    .addComponent(Rmidia)
                     .addComponent(Rfilme)
                     .addComponent(Rserie)
                     .addComponent(Rlivro))
@@ -319,7 +300,7 @@ public class Pesquisa extends javax.swing.JPanel {
         }
         int tipo_midia = 0;
         ArrayList<Midia> midias = new ArrayList<>();
-        if(this.Rusuario.isSelected()){
+        
         if(Rfilme.isSelected()){
             midias = midiaControl.getFiltroUsuario(nome, 1);
             Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 1, midias.get(0).getId_usuario()));
@@ -336,24 +317,7 @@ public class Pesquisa extends javax.swing.JPanel {
             
         Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 0, midias.get(0).getId_usuario()));
         }
-        } else {
-        if(Rfilme.isSelected()){
-            midias = midiaControl.getFiltroMidia(nome, 1);
-            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
-        }
-        if(Rserie.isSelected()){
-            midias = midiaControl.getFiltroMidia(nome, 2);
-            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
-        }
-        if(Rlivro.isSelected()){
-            midias = midiaControl.getFiltroMidia(nome, 3);
-            Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, "", 1, midias.get(0).getId_usuario()));
-        }
-        if(!Rfilme.isSelected() && !Rserie.isSelected() && !Rlivro.isSelected()){
-            
-        Tmidia.setModel(new MidiaTableModelPesquisa(Tmidia, nome, 0, midias.get(0).getId_usuario()));
-        }
-        }
+        
         } catch (IndexOutOfBoundsException ex){
             JOptionPane.showMessageDialog(this, "Nome não encontrado!", "Não encontrou!", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -371,9 +335,7 @@ public class Pesquisa extends javax.swing.JPanel {
     private javax.swing.ButtonGroup PesquisaNome;
     private javax.swing.JRadioButton Rfilme;
     private javax.swing.JRadioButton Rlivro;
-    private javax.swing.JRadioButton Rmidia;
     private javax.swing.JRadioButton Rserie;
-    private javax.swing.JRadioButton Rusuario;
     private javax.swing.JTable Tmidia;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnVoltar;

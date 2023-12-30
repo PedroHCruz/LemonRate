@@ -203,11 +203,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="Rusuario" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="Rmidia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="463" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="632" max="-2" attributes="0"/>
                                       <Component id="Rfilme" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="Rserie" min="-2" max="-2" attributes="0"/>
@@ -232,8 +228,6 @@
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Rusuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Rmidia" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Rfilme" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Rserie" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Rlivro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -300,31 +294,6 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nome:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="Rusuario">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="PesquisaNome"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="Rmidia">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="PesquisaNome"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="M&#xed;dia"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="Rfilme">

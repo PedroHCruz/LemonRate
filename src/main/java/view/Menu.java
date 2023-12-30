@@ -100,7 +100,6 @@ public class Menu extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         logoCentral = new javax.swing.JLabel();
         logoMini = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         perfil = new javax.swing.JLabel();
         label_biblioteca = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -129,10 +128,6 @@ public class Menu extends javax.swing.JPanel {
         logoMini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoMini.setText("logo");
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Amigos");
-
         perfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         perfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         perfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,6 +139,7 @@ public class Menu extends javax.swing.JPanel {
         label_biblioteca.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         label_biblioteca.setForeground(new java.awt.Color(255, 255, 255));
         label_biblioteca.setText("Biblioteca");
+        label_biblioteca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         label_biblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 label_bibliotecaMouseClicked(evt);
@@ -163,9 +159,7 @@ public class Menu extends javax.swing.JPanel {
                         .addComponent(label_biblioteca)
                         .addGap(114, 114, 114)))
                 .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                 .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -178,7 +172,6 @@ public class Menu extends javax.swing.JPanel {
                         .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label_biblioteca)
-                            .addComponent(jLabel2)
                             .addComponent(logoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +267,6 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JLabel foto1;
     private javax.swing.JLabel foto2;
     private javax.swing.JLabel foto3;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
