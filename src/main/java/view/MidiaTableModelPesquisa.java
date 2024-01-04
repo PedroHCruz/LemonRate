@@ -30,7 +30,7 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
             if (id_tipo == 0) {
                 this.MidiasUsuario = this.midiaControl.ListaTodasMidias();
             } else {
-                if(id_tipo == 1){
+                /*if(id_tipo == 1){
                     this.MidiasUsuario = this.midiaControl.getFiltroMidia(nome_usuario, id_tipo);
                 }
                 if(id_tipo == 2){
@@ -38,7 +38,7 @@ public class MidiaTableModelPesquisa extends AbstractTableModel {
                 }
                 if(id_tipo == 3){
                     this.MidiasUsuario = this.midiaControl.getFiltroMidia(nome_usuario, id_tipo);
-                }
+                }*/
             }
         } else {
             if (id_tipo == 0) {
